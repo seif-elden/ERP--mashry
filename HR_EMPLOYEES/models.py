@@ -45,8 +45,8 @@ class User(AbstractUser):
 
 
     JobTitle = models.ForeignKey(JobTitle ,on_delete=models.CASCADE,null=True , related_name='JobTitles')
-    ProfileImg = models.ImageField(upload_to ='uploads/')
-    CV = models.FileField(upload_to ='uploads/')
+    ProfileImg = models.ImageField(upload_to ='images/uploads/')
+    CV = models.FileField(upload_to ='images/uploads/')
 
     father_name = models.CharField(max_length=255)
     mother_name = models.CharField(max_length=255)
