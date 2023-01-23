@@ -1,14 +1,14 @@
-https://06ab-156-205-120-53.eu.ngrok.io/hr/somedata/
+http://seifeldeen.pythonanywhere.com/hr/somedata/
 صفحه بترجعلك شويه بيانات للموظفين
 
-https://06ab-156-205-120-53.eu.ngrok.io/hr/alldata/1/
+http://seifeldeen.pythonanywhere.com/hr/alldata/1/
 صفحه بتعرض بيانات موظف واحد بس ..غير الرقم الي ف اللينك
 
-https://06ab-156-205-120-53.eu.ngrok.io/hr/departments/
+http://seifeldeen.pythonanywhere.com/hr/departments/
 صفحه بترجعلك كل الاقسام و الادارات التابعه لها
 
-https://06ab-156-205-120-53.eu.ngrok.io/hr/add-department/
+http://seifeldeen.pythonanywhere.com/hr/add-department/
 صفحه بتضيف قسم جديد
 
-https://06ab-156-205-120-53.eu.ngrok.io/hr/add-job/
+http://seifeldeen.pythonanywhere.com/hr/add-job/
 صفحه بتضيف مسمي وظيفي جوه القسم

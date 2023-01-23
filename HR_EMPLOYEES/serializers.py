@@ -4,22 +4,22 @@ from .models import *
 
 class SomEmpDataSerializer(serializers.ModelSerializer):
 
-    JobTitles = serializers.StringRelatedField()
+    JobTitle = serializers.StringRelatedField()
 
     class Meta:
         model = User
-        fields = ['id' , 'first_name','last_name','JobTitles','ProfileImg']
+        fields = ['id' , 'first_name','last_name','JobTitle','ProfileImg']
 
 class allEmpDataSerializer(serializers.ModelSerializer):
     
-    JobTitles = serializers.StringRelatedField()
+    JobTitle = serializers.StringRelatedField()
     branch = serializers.StringRelatedField()
     direct_manager = serializers.StringRelatedField()
 
 
     class Meta:
         model = User
-        fields = ['id' , 'first_name','last_name','JobTitles','ProfileImg' ,
+        fields = ['id' , 'first_name','last_name','JobTitle','ProfileImg' ,
                   'CV' , 'father_name' , 'mother_name' , 'emergancy_contact' ,
                   'salary' , 'branch' , 'direct_manager']
 
