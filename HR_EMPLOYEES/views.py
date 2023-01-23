@@ -3,7 +3,7 @@ from rest_framework import permissions
 from rest_framework.decorators import api_view , permission_classes ,authentication_classes
 from rest_framework.response import Response
 
-from .serializers import   SomEmpDataSerializer , available_departmentSerializer , JobTitle_createSerializer , Department_createSerializer , allEmpDataSerializer
+from .serializers import   SomEmpDataSerializer , available_departmentSerializer , JobTitle_createSerializer , Department_createSerializer , allEmpDataSerializer ,available_jobsSerializer
 from .models import User , Department , JobTitle 
 
 
@@ -34,6 +34,14 @@ def available_department(request):
     Departments = Department.objects.all()
     serializer = available_departmentSerializer(Departments, many=True)
     return Response(serializer.data)
+
+@api_view(["GET",])
+def available_jobs(request):
+
+    Jobs = JobTitle.objects.all()
+    serializer = available_jobsSerializer(Jobs, many=True)
+    return Response(serializer.data)
+
 
 @api_view(["POST",])
 def add_job(request):
