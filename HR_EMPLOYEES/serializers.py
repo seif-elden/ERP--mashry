@@ -47,7 +47,7 @@ class Department_createSerializer(serializers.ModelSerializer):
 
 class available_jobsSerializer(serializers.ModelSerializer):
     
-    Department = serializers.StringRelatedField()
+    Department = available_departmentSerializer()
 
     class Meta:
         model = JobTitle
