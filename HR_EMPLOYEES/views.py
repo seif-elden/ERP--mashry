@@ -66,3 +66,37 @@ def add_department(request):
         return Response(serializer.data , status=status.HTTP_201_CREATED)
         
     return Response(serializer.errors,status=status.HTTP_400_BAD_REQUEST)
+
+
+
+
+
+
+
+
+
+
+from rest_framework.views import APIView
+
+from rest_framework.authentication import SessionAuthentication, BasicAuthentication
+
+class CsrfExemptSessionAuthentication(SessionAuthentication):
+
+    def enforce_csrf(self, request):
+        return  # To not perform the csrf check previously happening
+
+# class add_job(APIView):
+
+#     authentication_classes = (CsrfExemptSessionAuthentication, BasicAuthentication)
+
+
+#     def post(self, request, format=None):
+
+
+#         serializer = JobTitle_createSerializer(data=request.data)
+
+#         if serializer.is_valid():
+#             serializer.save()
+#             return Response(serializer.data , status=status.HTTP_201_CREATED)
+
+#         return Response(serializer.errors,status=status.HTTP_400_BAD_REQUEST)
