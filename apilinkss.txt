@@ -4,11 +4,72 @@ http://seifeldeen.pythonanywhere.com/hr/somedata/
 http://seifeldeen.pythonanywhere.com/hr/alldata/1/
 صفحه بتعرض بيانات موظف واحد بس ..غير الرقم الي ف اللينك
 
-http://seifeldeen.pythonanywhere.com/hr/departments/
-صفحه بترجعلك كل الاقسام و الادارات التابعه لها
 
-http://seifeldeen.pythonanywhere.com/hr/add-department/
-صفحه بتضيف قسم جديد
+
+######### jobs #######################
+
+http://seifeldeen.pythonanywhere.com/hr/available-jobs
+
+get requst منغير اي حاجه 
+هترجعلك كل الوظايف
+
 
 http://seifeldeen.pythonanywhere.com/hr/add-job/
 صفحه بتضيف مسمي وظيفي جوه القسم
+
+post request
+data = {
+    "JobTitle" : " ",
+    "Department" : " "
+    
+}
+
+http://seifeldeen.pythonanywhere.com/hr/delete-job/<id>/
+
+delete request  منغير اي حاجه 
+هتمسح الوظيفه الي مكان ال id
+
+http://seifeldeen.pythonanywhere.com/hr/edit-job/<id>/
+صفحه بتعدل مسمي وظيفي جوه القسم
+
+put request
+data = {
+    "JobTitle" : " ",
+    "Department" : " "
+}
+
+
+############# departments ####################
+
+http://seifeldeen.pythonanywhere.com/hr/departments/
+
+get requst منغير اي حاجه 
+هترجعلك كل الاقسام
+
+
+http://seifeldeen.pythonanywhere.com/hr/add-department/
+صفحه بتضيف اقسام
+post request
+data = {
+    "Department" : "test",
+    "management" : "3"
+    
+}
+
+http://seifeldeen.pythonanywhere.com/hr/delete-department/<pk>/
+
+delete request  منغير اي حاجه 
+هتمسح قسم الي مكان ال id
+
+http://seifeldeen.pythonanywhere.com/hr/edit-department/<pk>/
+صفحه بتعدل مسمي القسم
+
+put request
+data = {
+    "Department" : "test",
+    "management" : "3"
+    
+}
+
+
+

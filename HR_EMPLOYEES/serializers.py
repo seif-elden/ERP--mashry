@@ -32,19 +32,13 @@ class available_departmentSerializer(serializers.ModelSerializer):
         model = Department
         fields = "__all__"
 
-
-
-class JobTitle_createSerializer(serializers.ModelSerializer):
-
-
-    class Meta:
-        model = JobTitle
-        fields = '__all__'
-
 class Department_createSerializer(serializers.ModelSerializer):
     class Meta:
         model = Department
         fields = '__all__'
+
+
+
 
 class available_jobsSerializer(serializers.ModelSerializer):
 
@@ -55,5 +49,11 @@ class available_jobsSerializer(serializers.ModelSerializer):
         fields = '__all__'
 
 
+class JobTitle_createSerializer(serializers.ModelSerializer):
+
+
+    class Meta:
+        model = JobTitle
+        fields = '__all__'
 
 

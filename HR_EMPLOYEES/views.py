@@ -1,9 +1,8 @@
 from rest_framework import status
-from rest_framework import permissions
-from rest_framework.decorators import api_view , permission_classes ,authentication_classes
+from rest_framework.decorators import api_view 
 from rest_framework.response import Response
 
-from .serializers import   SomEmpDataSerializer , available_departmentSerializer , JobTitle_createSerializer , Department_createSerializer , allEmpDataSerializer ,available_jobsSerializer
+from .serializers import  *
 from .models import User , Department , JobTitle
 
 
@@ -27,23 +26,6 @@ def AllEmpData(request,pk):
     return Response(serializer.data)
 
 
-
-@api_view(["GET",])
-def available_department(request):
-
-    Departments = Department.objects.all()
-    serializer = available_departmentSerializer(Departments, many=True)
-    return Response(serializer.data)
-
-@api_view(["GET",])
-def available_jobs(request):
-
-    Jobs = JobTitle.objects.all()
-    serializer = available_jobsSerializer(Jobs, many=True)
-    return Response(serializer.data)
-
-
-
 from rest_framework.views import APIView
 
 from rest_framework.authentication import SessionAuthentication, BasicAuthentication
@@ -53,6 +35,14 @@ class CsrfExemptSessionAuthentication(SessionAuthentication):
     def enforce_csrf(self, request):
         return  # To not perform the csrf check previously happening
 
+
+class available_jobs(APIView):
+    authentication_classes = (CsrfExemptSessionAuthentication, BasicAuthentication)
+
+    def get(self, request, format=None):
+        Jobs = JobTitle.objects.all()
+        serializer = available_jobsSerializer(Jobs, many=True)
+        return Response(serializer.data)
 
 class add_job(APIView):
 
@@ -70,6 +60,48 @@ class add_job(APIView):
 
         return Response(serializer.errors,status=status.HTTP_400_BAD_REQUEST)
     
+class delete_job(APIView):
+
+    authentication_classes = (CsrfExemptSessionAuthentication, BasicAuthentication)
+
+
+    def delete(self, request, pk ,format=None):
+        try:
+            JobTitle.objects.get(pk=pk).delete()
+        except:
+            return Response(data={'the_title':"couldn't find the_title"},status=status.HTTP_404_NOT_FOUND)
+
+        return Response(data={"succsess":"deleted"})
+
+class edit_job(APIView):
+
+    authentication_classes = (CsrfExemptSessionAuthentication, BasicAuthentication)
+
+    def put(self, request, pk, format=None):
+        the_title = JobTitle.objects.get(pk=pk)
+        serializer = JobTitle_createSerializer(the_title, data=request.data)
+        if serializer.is_valid():
+            serializer.save()
+            return Response(serializer.data)
+        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+
+
+
+
+
+
+
+
+class available_department(APIView):
+
+    authentication_classes = (CsrfExemptSessionAuthentication, BasicAuthentication)
+
+    def get(self, request, format=None):
+
+        Departments = Department.objects.all()
+        serializer = available_departmentSerializer(Departments, many=True)
+        return Response(serializer.data)
+
 class add_department(APIView):
 
     authentication_classes = (CsrfExemptSessionAuthentication, BasicAuthentication)
@@ -85,3 +117,32 @@ class add_department(APIView):
             return Response(serializer.data , status=status.HTTP_201_CREATED)
 
         return Response(serializer.errors,status=status.HTTP_400_BAD_REQUEST)
+
+class delete_department(APIView):
+
+    authentication_classes = (CsrfExemptSessionAuthentication, BasicAuthentication)
+
+
+    def delete(self, request, pk ,format=None):
+        try:
+            Department.objects.get(pk=pk).delete()
+        except:
+            return Response(data={'the_title':"couldn't find the_title"},status=status.HTTP_404_NOT_FOUND)
+
+        return Response(data={"succsess":"deleted"})
+
+class edit_department(APIView):
+
+    authentication_classes = (CsrfExemptSessionAuthentication, BasicAuthentication)
+
+    def put(self, request, pk, format=None):
+        the_Department = Department.objects.get(pk=pk)
+        serializer = Department_createSerializer(the_Department, data=request.data)
+        if serializer.is_valid():
+            serializer.save()
+            return Response(serializer.data)
+        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+
+
+
+
