@@ -43,38 +43,6 @@ def available_jobs(request):
     return Response(serializer.data)
 
 
-# @api_view(["POST",])
-# def add_job(request):
-
-#     JobTitle_create = JobTitle()
-#     serializer = JobTitle_createSerializer(JobTitle_create,data=request.data)
-
-#     if serializer.is_valid():
-#         serializer.save()
-#         return Response(serializer.data , status=status.HTTP_201_CREATED)
-
-#     return Response(serializer.errors,status=status.HTTP_400_BAD_REQUEST)
-
-@api_view(["POST",])
-def add_department(request):
-
-    Department_create = Department()
-    serializer = Department_createSerializer(Department_create,data=request.data)
-
-    if serializer.is_valid():
-        serializer.save()
-        return Response(serializer.data , status=status.HTTP_201_CREATED)
-
-    return Response(serializer.errors,status=status.HTTP_400_BAD_REQUEST)
-
-
-
-
-
-
-
-
-
 
 from rest_framework.views import APIView
 
@@ -95,6 +63,22 @@ class add_job(APIView):
 
 
         serializer = JobTitle_createSerializer(data=request.data)
+
+        if serializer.is_valid():
+            serializer.save()
+            return Response(serializer.data , status=status.HTTP_201_CREATED)
+
+        return Response(serializer.errors,status=status.HTTP_400_BAD_REQUEST)
+    
+class add_department(APIView):
+
+    authentication_classes = (CsrfExemptSessionAuthentication, BasicAuthentication)
+
+
+    def post(self, request, format=None):
+
+
+        serializer = Department_createSerializer(data=request.data)
 
         if serializer.is_valid():
             serializer.save()

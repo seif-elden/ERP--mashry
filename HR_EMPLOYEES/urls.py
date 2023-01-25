@@ -6,7 +6,7 @@ urlpatterns = [
     path('alldata/<pk>/', views.AllEmpData),
     path('departments/', views.available_department),
     path('add-job/', views.add_job.as_view()),
-    path('add-department/', views.add_department),
+    path('add-department/', views.add_department.as_view()),
     path('available-jobs/', views.available_jobs),
 
 ]
