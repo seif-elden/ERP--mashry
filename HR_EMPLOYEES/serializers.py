@@ -11,7 +11,7 @@ class SomEmpDataSerializer(serializers.ModelSerializer):
         fields = ['id' , 'first_name','last_name','JobTitle','ProfileImg']
 
 class allEmpDataSerializer(serializers.ModelSerializer):
-    
+
     JobTitle = serializers.StringRelatedField()
     branch = serializers.StringRelatedField()
     direct_manager = serializers.StringRelatedField()
@@ -25,7 +25,7 @@ class allEmpDataSerializer(serializers.ModelSerializer):
 
 
 class available_departmentSerializer(serializers.ModelSerializer):
-    
+
     management = serializers.StringRelatedField()
 
     class Meta:
@@ -35,7 +35,8 @@ class available_departmentSerializer(serializers.ModelSerializer):
 
 
 class JobTitle_createSerializer(serializers.ModelSerializer):
-    
+
+
     class Meta:
         model = JobTitle
         fields = '__all__'
@@ -46,7 +47,7 @@ class Department_createSerializer(serializers.ModelSerializer):
         fields = '__all__'
 
 class available_jobsSerializer(serializers.ModelSerializer):
-    
+
     Department = available_departmentSerializer()
 
     class Meta:

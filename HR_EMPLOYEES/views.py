@@ -4,7 +4,7 @@ from rest_framework.decorators import api_view , permission_classes ,authenticat
 from rest_framework.response import Response
 
 from .serializers import   SomEmpDataSerializer , available_departmentSerializer , JobTitle_createSerializer , Department_createSerializer , allEmpDataSerializer ,available_jobsSerializer
-from .models import User , Department , JobTitle 
+from .models import User , Department , JobTitle
 
 
 # Create your views here.
@@ -43,17 +43,17 @@ def available_jobs(request):
     return Response(serializer.data)
 
 
-@api_view(["POST",])
-def add_job(request):
+# @api_view(["POST",])
+# def add_job(request):
 
-    JobTitle_create = JobTitle()
-    serializer = JobTitle_createSerializer(JobTitle_create,data=request.data)
+#     JobTitle_create = JobTitle()
+#     serializer = JobTitle_createSerializer(JobTitle_create,data=request.data)
 
-    if serializer.is_valid():
-        serializer.save()
-        return Response(serializer.data , status=status.HTTP_201_CREATED)
-        
-    return Response(serializer.errors,status=status.HTTP_400_BAD_REQUEST)
+#     if serializer.is_valid():
+#         serializer.save()
+#         return Response(serializer.data , status=status.HTTP_201_CREATED)
+
+#     return Response(serializer.errors,status=status.HTTP_400_BAD_REQUEST)
 
 @api_view(["POST",])
 def add_department(request):
@@ -64,7 +64,7 @@ def add_department(request):
     if serializer.is_valid():
         serializer.save()
         return Response(serializer.data , status=status.HTTP_201_CREATED)
-        
+
     return Response(serializer.errors,status=status.HTTP_400_BAD_REQUEST)
 
 
@@ -85,18 +85,19 @@ class CsrfExemptSessionAuthentication(SessionAuthentication):
     def enforce_csrf(self, request):
         return  # To not perform the csrf check previously happening
 
-# class add_job(APIView):
 
-#     authentication_classes = (CsrfExemptSessionAuthentication, BasicAuthentication)
+class add_job(APIView):
 
-
-#     def post(self, request, format=None):
+    authentication_classes = (CsrfExemptSessionAuthentication, BasicAuthentication)
 
 
-#         serializer = JobTitle_createSerializer(data=request.data)
+    def post(self, request, format=None):
 
-#         if serializer.is_valid():
-#             serializer.save()
-#             return Response(serializer.data , status=status.HTTP_201_CREATED)
 
-#         return Response(serializer.errors,status=status.HTTP_400_BAD_REQUEST)
+        serializer = JobTitle_createSerializer(data=request.data)
+
+        if serializer.is_valid():
+            serializer.save()
+            return Response(serializer.data , status=status.HTTP_201_CREATED)
+
+        return Response(serializer.errors,status=status.HTTP_400_BAD_REQUEST)
