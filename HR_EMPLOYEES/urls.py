@@ -20,4 +20,9 @@ urlpatterns = [
     path('available-leaves/', views.available_leave.as_view()),
     path('delete-leave/<pk>/', views.delete_leave.as_view()),
     path('edit-leave/<pk>/', views.edit_leave.as_view()),
+
+    path('available-managments/', views.available_managements.as_view()),
+
+
+    
 ]

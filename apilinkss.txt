@@ -73,3 +73,37 @@ data = {
 
 
 
+############# leaves ####################
+
+
+http://seifeldeen.pythonanywhere.com/hr/available-leaves/
+
+get requst منغير اي حاجه 
+هترجعلك كل الاجازات
+
+
+http://seifeldeen.pythonanywhere.com/hr/add-leave/
+صفحه بتضيف اجازات
+post request
+data = {
+    "leave_ar" : "test",
+    "leave_en" : "تجربه" ,
+    "num" : "25"
+    
+}
+
+http://seifeldeen.pythonanywhere.com/hr/delete-leave/<pk>/
+
+delete request  منغير اي حاجه 
+هتمسح الاجازات الي مكان ال id
+
+http://seifeldeen.pythonanywhere.com/hr/edit-leave/<pk>/
+صفحه بتعدل الاجازخ القسم
+
+put request
+data = {
+    "leave_ar" : "test",
+    "leave_en" : "تجربه" ,
+    "num" : "25"
+    
+}

@@ -199,6 +199,18 @@ class edit_leave(APIView):
             return Response(serializer.data)
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
+##########################################
+
+
+class available_managements(APIView):
+
+    authentication_classes = (CsrfExemptSessionAuthentication, BasicAuthentication)
+
+    def get(self, request, format=None):
+
+        days_off = management.objects.all()
+        serializer = managementsSerializer(days_off, many=True)
+        return Response(serializer.data)
 
 
 

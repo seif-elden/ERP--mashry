@@ -66,3 +66,11 @@ class laeveSerializer(serializers.ModelSerializer):
         fields = '__all__'
 
 ##########################################
+
+class managementsSerializer(serializers.ModelSerializer):
+
+    class Meta:
+        model = management
+        fields = '__all__'
+
+##########################################
