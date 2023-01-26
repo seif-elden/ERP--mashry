@@ -23,6 +23,7 @@ class allEmpDataSerializer(serializers.ModelSerializer):
                   'CV' , 'father_name' , 'mother_name' , 'emergancy_contact' ,
                   'salary' , 'branch' , 'direct_manager']
 
+##########################################
 
 class available_departmentSerializer(serializers.ModelSerializer):
 
@@ -37,8 +38,7 @@ class Department_createSerializer(serializers.ModelSerializer):
         model = Department
         fields = '__all__'
 
-
-
+##########################################
 
 class available_jobsSerializer(serializers.ModelSerializer):
 
@@ -57,3 +57,12 @@ class JobTitle_createSerializer(serializers.ModelSerializer):
         fields = '__all__'
 
 
+##########################################
+
+class laeveSerializer(serializers.ModelSerializer):
+
+    class Meta:
+        model = DaysOffTypes
+        fields = '__all__'
+
+##########################################

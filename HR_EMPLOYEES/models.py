@@ -3,7 +3,7 @@ from django.contrib.auth.models import AbstractUser
 
 
 from django.dispatch import receiver
-from django.db.models.signals import post_save
+from django.db.models.signals import post_save , post_delete
 
 
 # Create your models here.
@@ -70,7 +70,7 @@ class DaysOffTypes(models.Model):
 
 class DaysOff(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE, null=True)
-    leave_name = models.CharField(max_length=255,null=True)
+    leave_name = models.ForeignKey(DaysOffTypes, on_delete=models.CASCADE, null=True)
     available_for_this_user  = models.IntegerField(null=True)
 
     def __str__(self):
@@ -79,16 +79,32 @@ class DaysOff(models.Model):
 
 
 @receiver(post_save, sender=User)
-def create_DaysOff(sender, instance=None, created=False, **kwargs):
+def create_DaysOff_for_new_user(sender, instance=None, created=False, **kwargs):
     if created:
 
         for x in DaysOffTypes.objects.all() :
             DaysOff.objects.create(
                 user=instance,
-                leave_name=x.leave_ar,
+                leave_name=x,
                 available_for_this_user = x.num
 
                 
             
             )
+
+@receiver(post_save, sender=DaysOffTypes)
+def create_DaysOff_for_new_leave(sender, instance=None, created=False, **kwargs):
+    if created:
+
+        for x in User.objects.all() :
+            DaysOff.objects.create(
+                user=x,
+                leave_name=instance,
+                available_for_this_user = instance.num
+
+                
+            
+            )
+    
+
     

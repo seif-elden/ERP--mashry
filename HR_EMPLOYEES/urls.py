@@ -2,8 +2,8 @@ from django.urls import path
 from . import views
 
 urlpatterns = [
-    path('somedata/', views.SomEmpData),
-    path('alldata/<pk>/', views.AllEmpData),
+    path('somedata/', views.SomEmpData.as_view()),
+    path('alldata/<pk>/', views.AllEmpData.as_view()),
          
 
     path('departments/', views.available_department.as_view()),
@@ -15,4 +15,9 @@ urlpatterns = [
     path('available-jobs/', views.available_jobs.as_view()),
     path('delete-job/<pk>/', views.delete_job.as_view()),
     path('edit-job/<pk>/', views.edit_job.as_view()),
+
+    path('add-leave/', views.add_leave.as_view()),
+    path('available-leaves/', views.available_leave.as_view()),
+    path('delete-leave/<pk>/', views.delete_leave.as_view()),
+    path('edit-leave/<pk>/', views.edit_leave.as_view()),
 ]

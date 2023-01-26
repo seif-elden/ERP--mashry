@@ -1,34 +1,15 @@
 from rest_framework import status
-from rest_framework.decorators import api_view 
 from rest_framework.response import Response
 
 from .serializers import  *
 from .models import User , Department , JobTitle
+from rest_framework.views import APIView
+
+from rest_framework.authentication import SessionAuthentication, BasicAuthentication
 
 
 # Create your views here.
 
-@api_view(["GET",])
-def SomEmpData(request):
-
-    Users = User.objects.all()
-    serializer = SomEmpDataSerializer(Users, many=True)
-    return Response(serializer.data)
-
-@api_view(["GET",])
-def AllEmpData(request,pk):
-    try:
-        the_user = User.objects.get(pk=pk)
-    except:
-        return Response(data={'the_user':"couldn't find the user"},status=status.HTTP_404_NOT_FOUND)
-
-    serializer = allEmpDataSerializer(the_user)
-    return Response(serializer.data)
-
-
-from rest_framework.views import APIView
-
-from rest_framework.authentication import SessionAuthentication, BasicAuthentication
 
 class CsrfExemptSessionAuthentication(SessionAuthentication):
 
@@ -36,6 +17,28 @@ class CsrfExemptSessionAuthentication(SessionAuthentication):
         return  # To not perform the csrf check previously happening
 
 
+
+class SomEmpData(APIView):
+    authentication_classes = (CsrfExemptSessionAuthentication, BasicAuthentication)
+
+    def get(self, request, format=None):
+        Users = User.objects.all()
+        serializer = SomEmpDataSerializer(Users, many=True)
+        return Response(serializer.data)
+
+class AllEmpData(APIView):
+    authentication_classes = (CsrfExemptSessionAuthentication, BasicAuthentication)
+
+    def get(self, request, pk, format=None):
+        try:
+            the_user = User.objects.get(pk=pk)
+        except:
+            return Response(data={'the_user':"couldn't find the user"},status=status.HTTP_404_NOT_FOUND)
+
+        serializer = allEmpDataSerializer(the_user)
+        return Response(serializer.data)
+
+##########################################
 class available_jobs(APIView):
     authentication_classes = (CsrfExemptSessionAuthentication, BasicAuthentication)
 
@@ -87,9 +90,7 @@ class edit_job(APIView):
 
 
 
-
-
-
+##########################################
 
 
 class available_department(APIView):
@@ -127,7 +128,7 @@ class delete_department(APIView):
         try:
             Department.objects.get(pk=pk).delete()
         except:
-            return Response(data={'the_title':"couldn't find the_title"},status=status.HTTP_404_NOT_FOUND)
+            return Response(data={'the_departmenrt':"couldn't find the_departmenrt"},status=status.HTTP_404_NOT_FOUND)
 
         return Response(data={"succsess":"deleted"})
 
@@ -142,6 +143,69 @@ class edit_department(APIView):
             serializer.save()
             return Response(serializer.data)
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+
+
+##########################################
+
+
+class available_leave(APIView):
+
+    authentication_classes = (CsrfExemptSessionAuthentication, BasicAuthentication)
+
+    def get(self, request, format=None):
+
+        days_off = DaysOffTypes.objects.all()
+        serializer = laeveSerializer(days_off, many=True)
+        return Response(serializer.data)
+
+class add_leave(APIView):
+
+    authentication_classes = (CsrfExemptSessionAuthentication, BasicAuthentication)
+
+
+    def post(self, request, format=None):
+
+
+        serializer = laeveSerializer(data=request.data)
+
+        if serializer.is_valid():
+            serializer.save()
+            return Response(serializer.data , status=status.HTTP_201_CREATED)
+
+        return Response(serializer.errors,status=status.HTTP_400_BAD_REQUEST)
+
+class delete_leave(APIView):
+
+    authentication_classes = (CsrfExemptSessionAuthentication, BasicAuthentication)
+
+
+    def delete(self, request, pk ,format=None):
+        try:
+            DaysOffTypes.objects.get(pk=pk).delete()
+        except:
+            return Response(data={'DaysOffTypes':"couldn't find the leave"},status=status.HTTP_404_NOT_FOUND)
+
+        return Response(data={"succsess":"deleted"})
+
+class edit_leave(APIView):
+
+    authentication_classes = (CsrfExemptSessionAuthentication, BasicAuthentication)
+
+    def put(self, request, pk, format=None):
+        the_leave = DaysOffTypes.objects.get(pk=pk)
+        serializer = laeveSerializer(the_leave, data=request.data)
+        if serializer.is_valid():
+            serializer.save()
+            return Response(serializer.data)
+        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+
+
+
+
+
+
+
+
 
 
 
