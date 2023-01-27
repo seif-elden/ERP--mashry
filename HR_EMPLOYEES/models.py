@@ -43,18 +43,37 @@ class branches(models.Model):
     
 class User(AbstractUser):
 
+    emp_type_options = [
+    ('Temp', 'Temporary'),
+    ('perm', 'permanent'),
 
-    JobTitle = models.ForeignKey(JobTitle ,on_delete=models.CASCADE,null=True , related_name='JobTitles')
+]
+
     ProfileImg = models.ImageField(upload_to ='images/uploads/')
-    CV = models.FileField(upload_to ='images/uploads/')
+    CV = models.FileField(upload_to ='images/uploads/',null=True)
+    national_id = models.FileField(upload_to ='images/uploads/' , null=True)
 
-    father_name = models.CharField(max_length=255)
-    mother_name = models.CharField(max_length=255)
+
+    emp_type = models.CharField(
+        max_length=4,
+        choices=emp_type_options,
+        default= "perm"
+    )
+
+    caontact_number = models.IntegerField(null=True)
+    bank_account = models.CharField(max_length=255,null=True)
+    emp_id = models.CharField(max_length=255,null=True)
+    family_name = models.CharField(max_length=255,null=True)
     emergancy_contact = models.IntegerField(null=True)
+
+    
+    contract_time = models.DateTimeField(null=True)
     salary = models.IntegerField(null=True)
     branch = models.ForeignKey(branches,on_delete=models.CASCADE,null=True)
 
     direct_manager = models.ForeignKey('self',on_delete=models.CASCADE,null=True)
+    JobTitle = models.ForeignKey(JobTitle ,on_delete=models.CASCADE,null=True , related_name='JobTitles')
+
 
 
 

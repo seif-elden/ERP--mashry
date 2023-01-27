@@ -19,9 +19,9 @@ class allEmpDataSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = User
-        fields = ['id' , 'first_name','last_name','JobTitle','ProfileImg' ,
-                  'CV' , 'father_name' , 'mother_name' , 'emergancy_contact' ,
-                  'salary' , 'branch' , 'direct_manager']
+        fields = ['id' , 'emp_id' ,  'first_name' ,'last_name','ProfileImg' , 'CV' , 'national_id' ,
+                    'caontact_number', 'family_name' , 'emergancy_contact' , 'bank_account' ,
+                    'JobTitle' , 'emp_type' , 'salary' ,'contract_time', 'branch' , 'direct_manager']
 
 ##########################################
 
