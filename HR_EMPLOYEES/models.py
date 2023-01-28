@@ -86,6 +86,7 @@ class User(AbstractUser):
     emp_id = models.CharField(max_length=255,null=True)
 
     family_name = models.CharField(max_length=255,null=True)
+    family_relation = models.CharField(max_length=255,null=True)
     emergancy_contact = models.CharField(max_length=12 , null=True)
 
     
