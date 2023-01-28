@@ -51,6 +51,11 @@ class User(AbstractUser):
     ('perm', 'permanent'),
 
 ]
+    gender_options = [
+    ('M', 'male'),
+    ('F', 'female'),
+
+]
 
     ProfileImg = models.ImageField(upload_to ='images/uploads/',null=True)
     CV = models.FileField(upload_to ='images/uploads/',null=True)
@@ -59,14 +64,24 @@ class User(AbstractUser):
     insurance = models.FileField(upload_to ='images/uploads/' , null=True)
 
 
+    gender = models.CharField(
+        max_length=6,
+        choices=gender_options,
+        default= " "
+    )
+
     emp_type = models.CharField(
         max_length=4,
         choices=emp_type_options,
         default= "perm"
     )
 
+    address = models.CharField(max_length=120 , null=True)
+
     caontact_number = models.CharField(max_length=12 , null=True)
     bank_account = models.CharField(max_length=255,null=True)
+    birthday = models.DateField(null=True)
+
 
     emp_id = models.CharField(max_length=255,null=True)
 
