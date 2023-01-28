@@ -44,20 +44,24 @@ post request
 صفحه بتضيف  بيانات موظف جديد  ..غير الرقم الي ف اللينك
 
 data =   {
-    "first_name": "seif",
-    "username" : "seif7",
-    "last_name": "ibrahim",
-    "caontact_number": 12,
+    "first_name": "hmamaada",
+    "username" : "hmada",
+    "password":"password",
+    "email" : "email"
+    "last_name": "m33roof",
+    "caontact_number": "012",
     "family_name": "mahmoud",
-    "emergancy_contact": 12,
+    "emergancy_contact": "012",
     "bank_account": "566323",
     "JobTitle": "1",
     "emp_type": "perm",
     "salary": 296,
-    "the_contract_time": "2023-01-27",
+    "the_contract_time": "2023-01-11",
     "branch": "1",
-    "direct_manager": "11"
-
+    "direct_manager": "1",
+    "gender" : "M",
+    "address" : "حي الساقيين" ,
+    "birthday" : "2004-07-25"
 
 // files
     "ProfileImg": "",

@@ -47,13 +47,13 @@ class branches(models.Model):
 class User(AbstractUser):
 
     emp_type_options = [
-    ('Temp', 'Temporary'),
-    ('perm', 'permanent'),
+    ('تم التثبيت', 'تم التثبيت'),
+    ('يتم التجربة', 'يتم التجربة'),
 
 ]
     gender_options = [
-    ('M', 'male'),
-    ('F', 'female'),
+    ('مؤنث', 'مؤنث'),
+    ('مذكر', 'مذكر'),
 
 ]
 
@@ -65,15 +65,15 @@ class User(AbstractUser):
 
 
     gender = models.CharField(
-        max_length=6,
+        max_length=20,
         choices=gender_options,
-        default= " "
+        default= ""
     )
 
     emp_type = models.CharField(
-        max_length=4,
+        max_length=20,
         choices=emp_type_options,
-        default= "perm"
+        default= ""
     )
 
     address = models.CharField(max_length=120 , null=True)
