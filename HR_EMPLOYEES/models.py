@@ -136,7 +136,9 @@ def create_DaysOff_for_new_leave(sender, instance=None, created=False, **kwargs)
 def create_DaysOff_for_new_user(sender, instance=None, created=False, **kwargs):
     if created:
         year = datetime.date.today().year
-        instance.emp_id = f"{year}_{ instance.id}"
+        if instance.id < 10 :
+            instance.id = f"0{instance.id}"
+        instance.emp_id = f"{instance.id}{year}"
         instance.save()
 
 
