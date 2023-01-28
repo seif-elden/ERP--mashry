@@ -3,7 +3,10 @@ from django.contrib.auth.models import AbstractUser
 
 
 from django.dispatch import receiver
-from django.db.models.signals import post_save , post_delete
+from django.db.models.signals import post_save 
+
+import datetime
+
 
 
 # Create your models here.
@@ -52,6 +55,8 @@ class User(AbstractUser):
     ProfileImg = models.ImageField(upload_to ='images/uploads/',null=True)
     CV = models.FileField(upload_to ='images/uploads/',null=True)
     national_id = models.FileField(upload_to ='images/uploads/' , null=True)
+    contract_copy = models.FileField(upload_to ='images/uploads/' , null=True)
+    insurance = models.FileField(upload_to ='images/uploads/' , null=True)
 
 
     emp_type = models.CharField(
@@ -62,12 +67,14 @@ class User(AbstractUser):
 
     caontact_number = models.IntegerField(null=True)
     bank_account = models.CharField(max_length=255,null=True)
+
     emp_id = models.CharField(max_length=255,null=True)
+
     family_name = models.CharField(max_length=255,null=True)
     emergancy_contact = models.IntegerField(null=True)
 
     
-    contract_time = models.DateTimeField(null=True)
+    the_contract_time = models.DateField(null=True)
     salary = models.IntegerField(null=True)
     branch = models.ForeignKey(branches,on_delete=models.CASCADE,null=True)
 
@@ -80,7 +87,6 @@ class User(AbstractUser):
 
 class DaysOffTypes(models.Model):
     leave_ar = models.CharField(max_length=255)
-    leave_en = models.CharField(max_length=255)
     num = models.IntegerField(null=True)
 
     def __str__(self):
@@ -125,5 +131,13 @@ def create_DaysOff_for_new_leave(sender, instance=None, created=False, **kwargs)
             
             )
     
+
+@receiver(post_save, sender=User)
+def create_DaysOff_for_new_user(sender, instance=None, created=False, **kwargs):
+    if created:
+        year = datetime.date.today().year
+        instance.emp_id = f"{year}_{ instance.id}"
+        instance.save()
+
 
     

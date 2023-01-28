@@ -20,8 +20,11 @@ class allEmpDataSerializer(serializers.ModelSerializer):
     class Meta:
         model = User
         fields = ['id' , 'emp_id' , 'username', 'first_name' ,'last_name','ProfileImg' , 'CV' , 'national_id' ,
+                    "insurance" ,"contract_copy" ,
                     'caontact_number', 'family_name' , 'emergancy_contact' , 'bank_account' ,
-                    'JobTitle' , 'emp_type' , 'salary' ,'contract_time', 'branch' , 'direct_manager']
+                    'JobTitle' , 'emp_type' , 'salary' ,'the_contract_time', 'branch' , 'direct_manager']
+        read_only_fields = ('id', 'emp_id')
+
 
 class allEmpDatacreat_updateS_erializer(serializers.ModelSerializer):
 
@@ -29,8 +32,11 @@ class allEmpDatacreat_updateS_erializer(serializers.ModelSerializer):
     class Meta:
         model = User
         fields = ['id' , 'emp_id' , 'username', 'first_name' ,'last_name','ProfileImg' , 'CV' , 'national_id' ,
+                    "insurance" ,"contract_copy" ,
                     'caontact_number', 'family_name' , 'emergancy_contact' , 'bank_account' ,
-                    'JobTitle' , 'emp_type' , 'salary' ,'contract_time', 'branch' , 'direct_manager']
+                    'JobTitle' , 'emp_type' , 'salary' ,'the_contract_time', 'branch' , 'direct_manager']
+        read_only_fields = ('id', 'emp_id')
+        
 
 ##########################################
 
