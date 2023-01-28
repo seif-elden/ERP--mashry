@@ -36,7 +36,26 @@ class allEmpDatacreat_updateS_erializer(serializers.ModelSerializer):
                     'JobTitle' , 'emp_type' , 'salary' ,'the_contract_time', 'branch' , 'direct_manager']
         read_only_fields = ('id', 'emp_id')
         extra_kwargs = {
-            'password': {'write_only': True}
+            'password': {'write_only': True , "required" : True},
+            "family_relation" :{"required" : True},
+            "address" :{"required" : True},
+            "username" :{"required" : True},
+            "first_name" :{"required" : True},
+            "last_name" :{"required" : True},
+            "ProfileImg" :{"required" : True},
+            "CV" :{"required" : True},
+            "national_id" :{"required" : True},
+            "caontact_number" :{"required" : True},
+            "emergancy_contact" :{"required" : True},
+            "bank_account" :{"required" : True},
+            "JobTitle" :{"required" : True},
+            "emp_type" :{"required" : True},
+            "salary" :{"required" : True},
+            "the_contract_time" :{"required" : True},
+            "direct_manager" :{"required" : True},
+            "family_name" :{"required" : True},
+            
+
         }
         
 
