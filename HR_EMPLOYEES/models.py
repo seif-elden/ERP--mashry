@@ -65,13 +65,13 @@ class User(AbstractUser):
         default= "perm"
     )
 
-    caontact_number = models.IntegerField(null=True)
+    caontact_number = models.CharField(max_length=12 , null=True)
     bank_account = models.CharField(max_length=255,null=True)
 
     emp_id = models.CharField(max_length=255,null=True)
 
     family_name = models.CharField(max_length=255,null=True)
-    emergancy_contact = models.IntegerField(null=True)
+    emergancy_contact = models.CharField(max_length=12 , null=True)
 
     
     the_contract_time = models.DateField(null=True)

@@ -9,7 +9,7 @@ class SomEmpDataSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = User
-        fields = ['id' ,"date_joined", 'first_name','last_name','JobTitle','ProfileImg' ,'emp_id' ,'email' ]
+        fields = ['id' ,"date_joined", 'first_name','last_name','JobTitle','ProfileImg' ,'emp_id' ,'email' , 'caontact_number']
 
 class allEmpDataSerializer(serializers.ModelSerializer):
 
