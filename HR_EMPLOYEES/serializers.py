@@ -6,9 +6,10 @@ class SomEmpDataSerializer(serializers.ModelSerializer):
 
     JobTitle = serializers.StringRelatedField()
 
+
     class Meta:
         model = User
-        fields = ['id' , 'first_name','last_name','JobTitle','ProfileImg']
+        fields = ['id' ,"date_joined", 'first_name','last_name','JobTitle','ProfileImg' ,'emp_id' ,'email' ]
 
 class allEmpDataSerializer(serializers.ModelSerializer):
 
@@ -19,16 +20,19 @@ class allEmpDataSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = User
-        fields = ['id' , 'emp_id' , 'username', 'first_name' ,'last_name','ProfileImg' , 'CV' , 'national_id' ,
+        fields = ['id' , 'emp_id' , 'username', 'first_name' ,'last_name', 'email', 'ProfileImg' , 'CV' , 'national_id' ,
                     "insurance" ,"contract_copy" ,
                     'caontact_number', 'family_name' , 'emergancy_contact' , 'bank_account' ,
                     'JobTitle' , 'emp_type' , 'salary' ,'the_contract_time', 'branch' , 'direct_manager']
-        read_only_fields = ('id', 'emp_id')
 
 
 class allEmpDatacreat_updateS_erializer(serializers.ModelSerializer):
 
-
+    def create(self, validated_data):
+            user = super().create(validated_data)
+            user.set_password(validated_data['password'])
+            user.save()
+            return user
     class Meta:
         model = User
         fields = ['id' , 'emp_id' , 'username', 'first_name' ,'last_name','ProfileImg' , 'CV' , 'national_id' ,
