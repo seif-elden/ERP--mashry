@@ -20,7 +20,7 @@ class allEmpDataSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = User
-        fields = ['id' , 'emp_id' ,'address', 'username', 'first_name' ,'last_name', 'email', 'ProfileImg' , 'CV' , 'national_id' ,
+        fields = ['id' , "family_relation",'emp_id' ,'address', 'username', 'first_name' ,'last_name', 'email', 'ProfileImg' , 'CV' , 'national_id' ,
                     "insurance" ,"contract_copy" , 'birthday', 'gender',
                     'caontact_number', 'family_name' , 'emergancy_contact' , 'bank_account' ,
                     'JobTitle' , 'emp_type' , 'salary' ,'the_contract_time', 'branch' , 'direct_manager']
@@ -30,7 +30,7 @@ class allEmpDatacreat_updateS_erializer(serializers.ModelSerializer):
 
     class Meta:
         model = User
-        fields = ['id' , 'address','password' ,'emp_id' , 'username', 'first_name' ,'last_name','ProfileImg' , 'CV' , 'national_id' ,
+        fields = ['id' , 'family_relation', 'address','password' ,'emp_id' , 'username', 'first_name' ,'last_name','ProfileImg' , 'CV' , 'national_id' ,
                     "insurance" ,"contract_copy" , 'birthday', 'gender',
                     'caontact_number', 'family_name' , 'emergancy_contact' , 'bank_account' ,
                     'JobTitle' , 'emp_type' , 'salary' ,'the_contract_time', 'branch' , 'direct_manager']
