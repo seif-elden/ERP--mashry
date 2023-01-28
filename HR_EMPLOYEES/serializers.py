@@ -31,7 +31,7 @@ class allEmpDatacreat_updateS_erializer(serializers.ModelSerializer):
     class Meta:
         model = User
         fields = ['id' , 'family_relation', 'address','password' ,'emp_id' , 'username', 'first_name' ,'last_name','ProfileImg' , 'CV' , 'national_id' ,
-                    "insurance" ,"contract_copy" , 'birthday', 'gender',
+                    "insurance" ,"contract_copy" , 'birthday', 'gender', 'email',
                     'caontact_number', 'family_name' , 'emergancy_contact' , 'bank_account' ,
                     'JobTitle' , 'emp_type' , 'salary' ,'the_contract_time', 'branch' , 'direct_manager']
         read_only_fields = ('id', 'emp_id')
