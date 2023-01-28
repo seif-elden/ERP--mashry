@@ -19,7 +19,16 @@ class allEmpDataSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = User
-        fields = ['id' , 'emp_id' ,  'first_name' ,'last_name','ProfileImg' , 'CV' , 'national_id' ,
+        fields = ['id' , 'emp_id' , 'username', 'first_name' ,'last_name','ProfileImg' , 'CV' , 'national_id' ,
+                    'caontact_number', 'family_name' , 'emergancy_contact' , 'bank_account' ,
+                    'JobTitle' , 'emp_type' , 'salary' ,'contract_time', 'branch' , 'direct_manager']
+
+class allEmpDatacreat_updateS_erializer(serializers.ModelSerializer):
+
+
+    class Meta:
+        model = User
+        fields = ['id' , 'emp_id' , 'username', 'first_name' ,'last_name','ProfileImg' , 'CV' , 'national_id' ,
                     'caontact_number', 'family_name' , 'emergancy_contact' , 'bank_account' ,
                     'JobTitle' , 'emp_type' , 'salary' ,'contract_time', 'branch' , 'direct_manager']
 

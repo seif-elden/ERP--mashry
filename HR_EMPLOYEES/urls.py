@@ -3,7 +3,12 @@ from . import views
 
 urlpatterns = [
     path('somedata/', views.SomEmpData.as_view()),
-    path('alldata/<pk>/', views.AllEmpData.as_view()),
+
+
+    path('emp-data/<pk>/', views.AllEmpData.as_view()),
+    path('update-emp/<pk>/', views.EditEmpData.as_view()),
+    path('delete-emp/<pk>/', views.DeleteEmpData.as_view()),
+    path('add-emp/', views.AddEmp.as_view()),
          
 
     path('departments/', views.available_department.as_view()),

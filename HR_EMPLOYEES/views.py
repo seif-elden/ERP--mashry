@@ -1,4 +1,4 @@
-from rest_framework import status
+from rest_framework import status , generics
 from rest_framework.response import Response
 
 from .serializers import  *
@@ -6,7 +6,6 @@ from .models import User , Department , JobTitle
 from rest_framework.views import APIView
 
 from rest_framework.authentication import SessionAuthentication, BasicAuthentication
-
 
 # Create your views here.
 
@@ -26,18 +25,26 @@ class SomEmpData(APIView):
         serializer = SomEmpDataSerializer(Users, many=True)
         return Response(serializer.data)
 
-class AllEmpData(APIView):
-    authentication_classes = (CsrfExemptSessionAuthentication, BasicAuthentication)
+class AddEmp(generics.CreateAPIView):
+    queryset = User.objects.all()
+    serializer_class = allEmpDatacreat_updateS_erializer
 
-    def get(self, request, pk, format=None):
-        try:
-            the_user = User.objects.get(pk=pk)
-        except:
-            return Response(data={'the_user':"couldn't find the user"},status=status.HTTP_404_NOT_FOUND)
 
-        serializer = allEmpDataSerializer(the_user)
-        return Response(serializer.data)
+class EditEmpData(generics.UpdateAPIView):
+    queryset = User.objects.all()
+    serializer_class = allEmpDatacreat_updateS_erializer
 
+
+class AllEmpData(generics.RetrieveAPIView):
+    queryset = User.objects.all()
+    serializer_class = allEmpDataSerializer
+
+class DeleteEmpData(generics.DestroyAPIView):
+    queryset = User.objects.all()
+    serializer_class = allEmpDataSerializer
+
+
+    
 ##########################################
 class available_jobs(APIView):
     authentication_classes = (CsrfExemptSessionAuthentication, BasicAuthentication)

@@ -1,8 +1,72 @@
 http://seifeldeen.pythonanywhere.com/hr/somedata/
 صفحه بترجعلك شويه بيانات للموظفين
 
-http://seifeldeen.pythonanywhere.com/hr/alldata/1/
+http://seifeldeen.pythonanywhere.com/hr/emp-data/1/
+get request
 صفحه بتعرض بيانات موظف واحد بس ..غير الرقم الي ف اللينك
+
+
+http://seifeldeen.pythonanywhere.com/hr/delete-emp/3/
+delete request تمسح الموظف
+
+
+http://seifeldeen.pythonanywhere.com/hr/update-emp/1/
+put request
+صفحه بتعدل بيانات موظف واحد بس ..غير الرقم الي ف اللينك
+
+data =  {
+    "emp_id": "test test",
+    "first_name": "seif",
+    "username" : "seif7",
+    "last_name": "ibrahim",
+    "caontact_number": 12,
+    "family_name": "mahmoud",
+    "emergancy_contact": 12,
+    "bank_account": "566323",
+    "JobTitle": "1",
+    "emp_type": "perm",
+    "salary": 296,
+    "contract_time": "2023-01-27T23:40:16Z",
+    "branch": "1",
+    "direct_manager": "1"
+
+// files
+    "ProfileImg": "",
+    "CV": "",
+    "national_id": "",
+}
+
+
+http://seifeldeen.pythonanywhere.com/hr/add-emp/
+
+post request
+صفحه بتضيف  بيانات موظف جديد  ..غير الرقم الي ف اللينك
+
+data =   {
+    "emp_id": "test test",
+    "first_name": "seif",
+    "username" : "seif7",
+    "last_name": "ibrahim",
+    "caontact_number": 12,
+    "family_name": "mahmoud",
+    "emergancy_contact": 12,
+    "bank_account": "566323",
+    "JobTitle": "1",
+    "emp_type": "perm",
+    "salary": 296,
+    "contract_time": "2023-01-27T23:40:16Z",
+    "branch": "1",
+    "direct_manager": "11"
+
+
+// files
+    "ProfileImg": "",
+    "CV": "",
+    "national_id": "",
+}
+
+
+
 
 
 

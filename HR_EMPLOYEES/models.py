@@ -49,7 +49,7 @@ class User(AbstractUser):
 
 ]
 
-    ProfileImg = models.ImageField(upload_to ='images/uploads/')
+    ProfileImg = models.ImageField(upload_to ='images/uploads/',null=True)
     CV = models.FileField(upload_to ='images/uploads/',null=True)
     national_id = models.FileField(upload_to ='images/uploads/' , null=True)
 
