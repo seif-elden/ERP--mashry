@@ -29,5 +29,20 @@ urlpatterns = [
     path('available-managments/', views.available_managements.as_view()),
 
 
+    path('available-equipment/', views.AllEquipment.as_view()),
+    path('user-equipment/<pk>/', views.user_equipment.as_view()),
+
+    path('add-equipment/', views.AddEquipment.as_view()),
+
+    path('edit-equipment/<pk>/', views.edit_equipment.as_view()),
+    path('add-user-to-equipment/', views.add_user_to_equipment.as_view()),
+    path('delete-user-from-equipment/', views.delete_user_from_equipment.as_view()),
+
+    path('delete-equipment/<pk>/', views.delete_equipment.as_view()),
+
+
+
+
+
     
 ]

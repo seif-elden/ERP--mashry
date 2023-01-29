@@ -8,4 +8,5 @@ admin.site.register(Department)
 admin.site.register(branches)
 admin.site.register(DaysOff)
 admin.site.register(management)
+admin.site.register(equipment)
 # Register your models here.

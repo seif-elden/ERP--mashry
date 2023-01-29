@@ -110,3 +110,20 @@ class managementsSerializer(serializers.ModelSerializer):
         fields = '__all__'
 
 ##########################################
+
+class user_equipment_erializer(serializers.ModelSerializer):
+    class Meta:
+        model = equipment
+        fields = ['id','equipmentName']
+
+        extra_kwargs = {
+            "equipmentName" :{"required" : True},
+            }
+
+
+class equipment_erializer(serializers.ModelSerializer):
+
+    user = serializers.StringRelatedField(many=True)
+    class Meta:
+        model = equipment
+        fields = "__all__"

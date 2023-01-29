@@ -15,7 +15,7 @@ class CsrfExemptSessionAuthentication(SessionAuthentication):
     def enforce_csrf(self, request):
         return  # To not perform the csrf check previously happening
 
-
+##########################################
 
 class SomEmpData(APIView):
     authentication_classes = (CsrfExemptSessionAuthentication, BasicAuthentication)
@@ -220,12 +220,78 @@ class available_managements(APIView):
         return Response(serializer.data)
 
 
+##########################################
+
+class user_equipment(APIView):
+    authentication_classes = (CsrfExemptSessionAuthentication, BasicAuthentication)
+
+    def get(self, request, *args, **kwargs):
+        pk = self.kwargs['pk']
+        equipments = equipment.objects.filter(user=pk)
+        
+        serializer = user_equipment_erializer(equipments, many=True)
+
+        return Response(serializer.data)
+
+class add_user_to_equipment(APIView):
+
+    def post(self, request, format=None):
+
+        try :
+            theUser = User.objects.get(id=request.data.get("userid"))
+        except:
+            return Response(data={'userid':"couldn't find User"},status=status.HTTP_404_NOT_FOUND)
+        try :
+            theequipment = equipment.objects.get(id=request.data.get("equipmentid"))
+        except:
+            return Response(data={'equipmentid':"couldn't find theequipment"},status=status.HTTP_404_NOT_FOUND)
+
+
+        theequipment.user.add(theUser)
 
 
 
+        return Response(data={"succsess":"added"})
+
+class delete_user_from_equipment(APIView):
+
+    def delete(self, request, format=None):
+
+        try :
+            theUser = User.objects.get(id=request.data.get("userid"))
+        except:
+            return Response(data={'userid':"couldn't find User"},status=status.HTTP_404_NOT_FOUND)
+        try :
+            theequipment = equipment.objects.get(id=request.data.get("equipmentid"))
+        except:
+            return Response(data={'equipmentid':"couldn't find theequipment"},status=status.HTTP_404_NOT_FOUND)
+
+
+        theequipment.user.remove(theUser)
 
 
 
+        return Response(data={"succsess":"deleted"})
+
+class delete_equipment(generics.DestroyAPIView):
+    queryset = equipment.objects.all()
+    serializer_class = user_equipment_erializer
 
 
+class edit_equipment(generics.UpdateAPIView):
+    queryset = equipment.objects.all()
+    serializer_class = user_equipment_erializer
 
+
+class AllEquipment(APIView):
+    authentication_classes = (CsrfExemptSessionAuthentication, BasicAuthentication)
+
+    def get(self, request, format=None):
+        queryset = equipment.objects.all()
+        serializer = equipment_erializer(queryset, many=True)
+        return Response(serializer.data)
+
+
+class AddEquipment(generics.CreateAPIView):
+    queryset = equipment.objects.all()
+    serializer_class = user_equipment_erializer

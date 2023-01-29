@@ -46,6 +46,10 @@ class branches(models.Model):
     
 class User(AbstractUser):
 
+    first_name = models.CharField( max_length=150)
+    last_name = models.CharField( max_length=150)
+    email = models.EmailField()
+
     emp_type_options = [
     ('تم التثبيت', 'تم التثبيت'),
     ('يتم التجربة', 'يتم التجربة'),
@@ -96,7 +100,22 @@ class User(AbstractUser):
 
     direct_manager = models.ForeignKey('self',on_delete=models.CASCADE,null=True)
     JobTitle = models.ForeignKey(JobTitle ,on_delete=models.CASCADE,null=True , related_name='JobTitles')
+    
 
+    
+
+
+
+class equipment(models.Model):
+
+    equipmentName = models.CharField( max_length=50,null=True)
+    user = models.ManyToManyField(User, null=True)
+
+
+
+
+    def __str__(self):
+        return self.equipmentName
 
 
 

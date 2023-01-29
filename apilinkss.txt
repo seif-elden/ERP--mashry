@@ -177,3 +177,70 @@ data = {
     "num" : "25"
     
 }
+
+
+
+
+################# عهد ###########################
+
+http://seifeldeen.pythonanywhere.com/hr/available-equipment/
+get request ترجعلك كل العهد الي موجوده
+
+
+
+http://seifeldeen.pythonanywhere.com/hr/user-equipment/<pk>/
+get request يجيبلك كل العهد بتاعت اليوزر الي ف pk
+
+
+
+
+http://seifeldeen.pythonanywhere.com/hr/add-equipment/
+post request يعمل هعده
+data = {
+    "equipmentName" : "سياره"
+}
+
+
+
+
+
+http://seifeldeen.pythonanywhere.com/hr/edit-equipment/<pk>/
+put request بيعدل ف اسم العهده
+{
+    "equipmentName" : "لابتوت"
+}
+
+
+
+
+http://seifeldeen.pythonanywhere.com/hr/add-user-to-equipment/
+post request يضيف يوزر ل عهده
+
+data = {
+    "userid" : 1,
+    "equipmentid" : 4
+}
+لو عايز يضيف كذا يوزر يبقي تعمل فور لووب و تفضل تغير ال userid
+
+
+
+
+
+http://seifeldeen.pythonanywhere.com/hr/delete-user-from-equipment/
+delete request يشيل يوزر من عهده
+
+data = {
+    "userid" : 1,
+    "equipmentid" : 4
+}
+لو عايز تشيل كذا يوزر يبقي تعمل فور لووب و تفضل تغير ال userid
+
+
+
+
+
+http://seifeldeen.pythonanywhere.com/hr/delete-equipment/1/
+delete request يمسح  العهده اصلا
+
+
+
