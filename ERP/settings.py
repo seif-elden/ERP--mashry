@@ -146,6 +146,9 @@ CORS_ORIGIN_ALLOW_ALL = True
 
 REST_FRAMEWORK = {
     'DATETIME_FORMAT': "%m/%d/%Y ",
+    'DEFAULT_AUTHENTICATION_CLASSES': [
+        'rest_framework.authentication.BasicAuthentication',
+        'rest_framework.authentication.SessionAuthentication',
+    ]
 }
 
-# CORS_ALLOW_CREDENTIALS = True
