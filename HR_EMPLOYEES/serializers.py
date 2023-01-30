@@ -24,7 +24,7 @@ class allEmpDataSerializer(serializers.ModelSerializer):
                     "insurance" ,"contract_copy" , 'birthday', 'gender', "date_joined",
                     'caontact_number', 'family_name' , 'emergancy_contact' , 'bank_account' ,
                     'JobTitle' , 'emp_type' , 'salary' ,'the_contract_time', 'branch' , 'direct_manager',
-                    'bank_account_iban' , 'bank_account_name' , 'paypal_email'
+                    'bank_account_iban' , 'bank_name' , 'paypal_email'
                     ]
 
 
@@ -36,7 +36,7 @@ class allEmpDatacreat_updateS_erializer(serializers.ModelSerializer):
                     "insurance" ,"contract_copy" , 'birthday', 'gender', 'email',
                     'caontact_number', 'family_name' , 'emergancy_contact' , 'bank_account' ,
                     'JobTitle' , 'emp_type' , 'salary' ,'the_contract_time', 'branch' , 'direct_manager',
-                    'bank_account_iban' , 'bank_account_name' , 'paypal_email'
+                    'bank_account_iban' , 'bank_name' , 'paypal_email'
 
                     ]
         read_only_fields = ('id', 'emp_id')
