@@ -106,7 +106,11 @@ class edit_job(APIView):
     authentication_classes = (CsrfExemptSessionAuthentication, BasicAuthentication)
     # permission_classes = [IsAuthenticated]
     def put(self, request, pk, format=None):
-        the_title = JobTitle.objects.get(pk=pk)
+        try:
+            the_title = JobTitle.objects.get(pk=pk)
+        except:
+            return Response(data={'job':"couldn't find job with that id"},status=status.HTTP_404_NOT_FOUND)
+        
         serializer = JobTitle_createSerializer(the_title, data=request.data)
         if serializer.is_valid():
             serializer.save()

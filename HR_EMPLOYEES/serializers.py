@@ -23,7 +23,9 @@ class allEmpDataSerializer(serializers.ModelSerializer):
         fields = ['id' , "family_relation",'emp_id' ,'address', 'username', 'first_name' ,'last_name', 'email', 'ProfileImg' , 'CV' , 'national_id' ,
                     "insurance" ,"contract_copy" , 'birthday', 'gender', "date_joined",
                     'caontact_number', 'family_name' , 'emergancy_contact' , 'bank_account' ,
-                    'JobTitle' , 'emp_type' , 'salary' ,'the_contract_time', 'branch' , 'direct_manager']
+                    'JobTitle' , 'emp_type' , 'salary' ,'the_contract_time', 'branch' , 'direct_manager',
+                    'bank_account_iban' , 'bank_account_name' , 'paypal_email'
+                    ]
 
 
 class allEmpDatacreat_updateS_erializer(serializers.ModelSerializer):
@@ -33,7 +35,10 @@ class allEmpDatacreat_updateS_erializer(serializers.ModelSerializer):
         fields = ['id' , 'family_relation', 'address','password' ,'emp_id' , 'username', 'first_name' ,'last_name','ProfileImg' , 'CV' , 'national_id' ,
                     "insurance" ,"contract_copy" , 'birthday', 'gender', 'email',
                     'caontact_number', 'family_name' , 'emergancy_contact' , 'bank_account' ,
-                    'JobTitle' , 'emp_type' , 'salary' ,'the_contract_time', 'branch' , 'direct_manager']
+                    'JobTitle' , 'emp_type' , 'salary' ,'the_contract_time', 'branch' , 'direct_manager',
+                    'bank_account_iban' , 'bank_account_name' , 'paypal_email'
+
+                    ]
         read_only_fields = ('id', 'emp_id')
         extra_kwargs = {
             'password': {'write_only': True , "required" : True},

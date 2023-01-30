@@ -85,7 +85,13 @@ class User(AbstractUser):
     address = models.CharField(max_length=120 , null=True)
 
     caontact_number = models.CharField(max_length=12 , null=True)
-    bank_account = models.CharField(max_length=255,null=True)
+
+    bank_account_iban = models.CharField(max_length=255,null=True,blank=True)
+    bank_account = models.CharField(max_length=255,null=True,blank=True)
+    bank_name = models.CharField(max_length=255,null=True,blank=True)
+
+    paypal_email = models.EmailField(null=True,blank=True)
+
     birthday = models.DateField(null=True)
 
 
