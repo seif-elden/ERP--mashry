@@ -30,7 +30,9 @@ class Department(models.Model):
     
 class JobTitle(models.Model):
     JobTitle = models.CharField(max_length=255)
-    Department = models.ForeignKey(Department,on_delete=models.CASCADE,null=True)
+    Department = models.ForeignKey(Department,on_delete=models.CASCADE,null=True , blank=True )
+    management = models.ForeignKey(management,on_delete=models.CASCADE,null=True , blank=True)
+
 
 
     def __str__(self):

@@ -21,7 +21,7 @@ class CsrfExemptSessionAuthentication(SessionAuthentication):
 
 class SomEmpData(APIView):
     authentication_classes = (CsrfExemptSessionAuthentication, BasicAuthentication)
-    permission_classes = [IsAuthenticated]
+    # permission_classes = [IsAuthenticated]
 
 
     def get(self, request, format=None):
@@ -34,7 +34,7 @@ class AddEmp(generics.CreateAPIView):
     serializer_class = allEmpDatacreat_updateS_erializer
 
     authentication_classes = (CsrfExemptSessionAuthentication, BasicAuthentication)
-    permission_classes = [IsAuthenticated]
+    # permission_classes = [IsAuthenticated]
 
 
 class EditEmpData(generics.UpdateAPIView):
@@ -42,7 +42,7 @@ class EditEmpData(generics.UpdateAPIView):
     serializer_class = allEmpDatacreat_updateS_erializer
 
     authentication_classes = (CsrfExemptSessionAuthentication, BasicAuthentication)
-    permission_classes = [IsAuthenticated]
+    # permission_classes = [IsAuthenticated]
 
     
 
@@ -52,18 +52,20 @@ class AllEmpData(generics.RetrieveAPIView):
     serializer_class = allEmpDataSerializer
 
     authentication_classes = (CsrfExemptSessionAuthentication, BasicAuthentication)
-    permission_classes = [IsAuthenticated]
+    # permission_classes = [IsAuthenticated]
 
 class DeleteEmpData(generics.DestroyAPIView):
     queryset = User.objects.all()
     serializer_class = allEmpDataSerializer
+    authentication_classes = (CsrfExemptSessionAuthentication, BasicAuthentication)
+    # permission_classes = [IsAuthenticated]
 
 
     
 ##########################################
 class available_jobs(APIView):
     authentication_classes = (CsrfExemptSessionAuthentication, BasicAuthentication)
-    permission_classes = [IsAuthenticated]
+    # permission_classes = [IsAuthenticated]
 
     def get(self, request, format=None):
         Jobs = JobTitle.objects.all()
@@ -73,7 +75,7 @@ class available_jobs(APIView):
 class add_job(APIView):
 
     authentication_classes = (CsrfExemptSessionAuthentication, BasicAuthentication)
-    permission_classes = [IsAuthenticated]
+    # permission_classes = [IsAuthenticated]
 
     def post(self, request, format=None):
 
@@ -89,7 +91,7 @@ class add_job(APIView):
 class delete_job(APIView):
 
     authentication_classes = (CsrfExemptSessionAuthentication, BasicAuthentication)
-    permission_classes = [IsAuthenticated]
+    # permission_classes = [IsAuthenticated]
 
     def delete(self, request, pk ,format=None):
         try:
@@ -102,7 +104,7 @@ class delete_job(APIView):
 class edit_job(APIView):
 
     authentication_classes = (CsrfExemptSessionAuthentication, BasicAuthentication)
-    permission_classes = [IsAuthenticated]
+    # permission_classes = [IsAuthenticated]
     def put(self, request, pk, format=None):
         the_title = JobTitle.objects.get(pk=pk)
         serializer = JobTitle_createSerializer(the_title, data=request.data)
@@ -119,7 +121,7 @@ class edit_job(APIView):
 class available_department(APIView):
 
     authentication_classes = (CsrfExemptSessionAuthentication, BasicAuthentication)
-    permission_classes = [IsAuthenticated]
+    # permission_classes = [IsAuthenticated]
     def get(self, request, format=None):
 
         Departments = Department.objects.all()
@@ -129,7 +131,7 @@ class available_department(APIView):
 class add_department(APIView):
 
     authentication_classes = (CsrfExemptSessionAuthentication, BasicAuthentication)
-    permission_classes = [IsAuthenticated]
+    # permission_classes = [IsAuthenticated]
 
     def post(self, request, format=None):
 
@@ -145,7 +147,7 @@ class add_department(APIView):
 class delete_department(APIView):
 
     authentication_classes = (CsrfExemptSessionAuthentication, BasicAuthentication)
-    permission_classes = [IsAuthenticated]
+    # permission_classes = [IsAuthenticated]
 
     def delete(self, request, pk ,format=None):
         try:
@@ -158,7 +160,7 @@ class delete_department(APIView):
 class edit_department(APIView):
 
     authentication_classes = (CsrfExemptSessionAuthentication, BasicAuthentication)
-    permission_classes = [IsAuthenticated]
+    # permission_classes = [IsAuthenticated]
 
     def put(self, request, pk, format=None):
         the_Department = Department.objects.get(pk=pk)
@@ -175,7 +177,7 @@ class edit_department(APIView):
 class available_leave(APIView):
 
     authentication_classes = (CsrfExemptSessionAuthentication, BasicAuthentication)
-    permission_classes = [IsAuthenticated]
+    # permission_classes = [IsAuthenticated]
 
     def get(self, request, format=None):
 
@@ -186,7 +188,7 @@ class available_leave(APIView):
 class add_leave(APIView):
 
     authentication_classes = (CsrfExemptSessionAuthentication, BasicAuthentication)
-    permission_classes = [IsAuthenticated]
+    # permission_classes = [IsAuthenticated]
 
     def post(self, request, format=None):
 
@@ -202,7 +204,7 @@ class add_leave(APIView):
 class delete_leave(APIView):
 
     authentication_classes = (CsrfExemptSessionAuthentication, BasicAuthentication)
-    permission_classes = [IsAuthenticated]
+    # permission_classes = [IsAuthenticated]
 
     def delete(self, request, pk ,format=None):
         try:
@@ -215,7 +217,7 @@ class delete_leave(APIView):
 class edit_leave(APIView):
 
     authentication_classes = (CsrfExemptSessionAuthentication, BasicAuthentication)
-    permission_classes = [IsAuthenticated]
+    # permission_classes = [IsAuthenticated]
 
     def put(self, request, pk, format=None):
         the_leave = DaysOffTypes.objects.get(pk=pk)
@@ -231,7 +233,7 @@ class edit_leave(APIView):
 class available_managements(APIView):
 
     authentication_classes = (CsrfExemptSessionAuthentication, BasicAuthentication)
-    permission_classes = [IsAuthenticated]
+    # permission_classes = [IsAuthenticated]
 
     def get(self, request, format=None):
 
@@ -244,7 +246,7 @@ class available_managements(APIView):
 
 class user_equipment(APIView):
     authentication_classes = (CsrfExemptSessionAuthentication, BasicAuthentication)
-    permission_classes = [IsAuthenticated]
+    # permission_classes = [IsAuthenticated]
 
     def get(self, request, *args, **kwargs):
         pk = self.kwargs['pk']
@@ -256,7 +258,7 @@ class user_equipment(APIView):
 
 class add_user_to_equipment(APIView):
     authentication_classes = (CsrfExemptSessionAuthentication, BasicAuthentication)
-    permission_classes = [IsAuthenticated]
+    # permission_classes = [IsAuthenticated]
 
     def post(self, request, format=None):
 
@@ -279,7 +281,7 @@ class add_user_to_equipment(APIView):
 class delete_user_from_equipment(APIView):
 
     authentication_classes = (CsrfExemptSessionAuthentication, BasicAuthentication)
-    permission_classes = [IsAuthenticated]
+    # permission_classes = [IsAuthenticated]
 
     def delete(self, request, format=None):
 
@@ -303,18 +305,18 @@ class delete_equipment(generics.DestroyAPIView):
     queryset = equipment.objects.all()
     serializer_class = user_equipment_erializer
     authentication_classes = (CsrfExemptSessionAuthentication, BasicAuthentication)
-    permission_classes = [IsAuthenticated]
+    # permission_classes = [IsAuthenticated]
 
 
 class edit_equipment(generics.UpdateAPIView):
     queryset = equipment.objects.all()
     serializer_class = user_equipment_erializer
     authentication_classes = (CsrfExemptSessionAuthentication, BasicAuthentication)
-    permission_classes = [IsAuthenticated]
+    # permission_classes = [IsAuthenticated]
 
 class AllEquipment(APIView):
     authentication_classes = (CsrfExemptSessionAuthentication, BasicAuthentication)
-    permission_classes = [IsAuthenticated]
+    # permission_classes = [IsAuthenticated]
     def get(self, request, format=None):
         queryset = equipment.objects.all()
         serializer = equipment_erializer(queryset, many=True)
@@ -325,4 +327,4 @@ class AddEquipment(generics.CreateAPIView):
     queryset = equipment.objects.all()
     serializer_class = user_equipment_erializer
     authentication_classes = (CsrfExemptSessionAuthentication, BasicAuthentication)
-    permission_classes = [IsAuthenticated]
+    # permission_classes = [IsAuthenticated]
