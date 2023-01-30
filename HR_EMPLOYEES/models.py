@@ -117,7 +117,7 @@ class User(AbstractUser):
 class equipment(models.Model):
 
     equipmentName = models.CharField( max_length=50,null=True)
-    user = models.ManyToManyField(User, null=True)
+    user = models.ManyToManyField(User)
 
 
 
@@ -143,6 +143,27 @@ class DaysOff(models.Model):
 
     def __str__(self):
         return f"{self.user} | {self.leave_name} | {self.available_for_this_user}"
+
+
+class weakly_leave(models.Model):
+
+    DAY_OF_THE_WEEK = [
+    ('سبت' , 'سبت'),
+    ('احد' , 'احد'),
+    ('اثنين' , 'اثنين'),
+    ('ثلثاء' , 'ثلثاء'),
+    ('اربعاء' , 'اربعاء'),
+    ('خميس' , 'خميس'), 
+    ('جمعه' , 'جمعه'),
+
+]
+
+    
+    day = models.CharField(max_length=10, choices=DAY_OF_THE_WEEK)
+
+    def __str__(self):
+        return self.day
+
 
 
 

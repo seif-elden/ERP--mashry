@@ -9,4 +9,5 @@ admin.site.register(branches)
 admin.site.register(DaysOff)
 admin.site.register(management)
 admin.site.register(equipment)
+admin.site.register(weakly_leave)
 # Register your models here.

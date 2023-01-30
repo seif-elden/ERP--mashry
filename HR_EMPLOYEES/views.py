@@ -178,6 +178,21 @@ class edit_department(APIView):
 ##########################################
 
 
+
+class AddWeakly_leave(generics.CreateAPIView):
+    queryset = weakly_leave.objects.all()
+    serializer_class = weakly_leaveSerializer
+
+    authentication_classes = (CsrfExemptSessionAuthentication, BasicAuthentication)
+    # permission_classes = [IsAuthenticated]
+
+class DeleteWeakly_leave(generics.DestroyAPIView):
+    queryset = weakly_leave.objects.all()
+    serializer_class = weakly_leaveSerializer
+    authentication_classes = (CsrfExemptSessionAuthentication, BasicAuthentication)
+    # permission_classes = [IsAuthenticated]
+
+
 class available_leave(APIView):
 
     authentication_classes = (CsrfExemptSessionAuthentication, BasicAuthentication)
