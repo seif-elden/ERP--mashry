@@ -179,6 +179,32 @@ data = {
 }
 
 
+http://seifeldeen.pythonanywhere.com/hr/list-weakly-leave/
+get request  هتجيبلك الاجازات الاسبوعيه
+
+http://seifeldeen.pythonanywhere.com/hr/add-weakly-leave/
+صفحه بتضيف اجازات
+post request
+data = {
+    "day" : "test",
+}
+day field accept   
+DAY_OF_THE_WEEK = [
+    ( 'سبت'),
+    ('احد'),
+    ('اثنين'),
+    ('ثلثاء'),
+    ('اربعاء'),
+    ('خميس'), 
+    ('جمعه'),
+]
+
+
+http://seifeldeen.pythonanywhere.com/hr/delete-weakly-leave/<pk>/
+delete request  منغير اي حاجه 
+هتمسح الاجازات الي مكان ال id
+
+
 
 
 ################# عهد ###########################

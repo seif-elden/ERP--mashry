@@ -193,6 +193,12 @@ class DeleteWeakly_leave(generics.DestroyAPIView):
     # permission_classes = [IsAuthenticated]
 
 
+class List_Weakly_leave(generics.ListAPIView):
+    queryset = weakly_leave.objects.all()
+    serializer_class = weakly_leaveSerializer
+    authentication_classes = (CsrfExemptSessionAuthentication, BasicAuthentication)
+    # permission_classes = [IsAuthenticated]
+
 class available_leave(APIView):
 
     authentication_classes = (CsrfExemptSessionAuthentication, BasicAuthentication)
