@@ -30,6 +30,9 @@ urlpatterns = [
     path('add-weakly-leave/', views.AddWeakly_leave.as_view()),
     path('delete-weakly-leave/<pk>/', views.DeleteWeakly_leave.as_view()),
 
+    path('add-leave-request/', views.add_leave_request.as_view()),
+    path('list-avuser-leave/', views.list_avfruser_leave_request.as_view()),
+
 
     path('available-managments/', views.available_managements.as_view()),
 

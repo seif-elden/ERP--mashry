@@ -129,9 +129,18 @@ class leave_requestSerializer(serializers.ModelSerializer):
     class Meta:
         model = leave_request
         fields = '__all__'
+        extra_kwargs = {
+                "number_of_days_requested" :{"required" : True},
+            }
 
 
+class DaysOffSerializer(serializers.ModelSerializer):
+    leave_name = serializers.StringRelatedField()
+    user = serializers.StringRelatedField()
 
+    class Meta:
+        model = DaysOff
+        fields = '__all__'
 
 
 
