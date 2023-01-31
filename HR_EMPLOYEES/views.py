@@ -177,7 +177,21 @@ class edit_department(APIView):
 
 ##########################################
 
+class add_leave_request(APIView):
 
+    authentication_classes = (CsrfExemptSessionAuthentication, BasicAuthentication)
+    permission_classes = [IsAuthenticated]
+
+    def post(self, request, format=None):
+
+
+        serializer = leave_requestSerializer(data=request.data)
+
+        if serializer.is_valid():
+            serializer.save()
+            return Response(serializer.data , status=status.HTTP_201_CREATED)
+
+        return Response(serializer.errors,status=status.HTTP_400_BAD_REQUEST)
 
 
 

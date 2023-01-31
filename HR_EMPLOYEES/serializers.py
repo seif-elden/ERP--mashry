@@ -84,6 +84,7 @@ class Department_createSerializer(serializers.ModelSerializer):
 class available_jobsSerializer(serializers.ModelSerializer):
 
     Department = available_departmentSerializer()
+    management = serializers.StringRelatedField()
 
     class Meta:
         model = JobTitle
@@ -121,10 +122,13 @@ class weakly_leaveSerializer(serializers.ModelSerializer):
         model = weakly_leave
         fields = '__all__'
 
+##########################################
 
+class leave_requestSerializer(serializers.ModelSerializer):
 
-
-
+    class Meta:
+        model = leave_request
+        fields = '__all__'
 
 
 
