@@ -159,7 +159,7 @@ class weakly_leave(models.Model):
 ]
 
     
-    day = models.CharField(max_length=10, choices=DAY_OF_THE_WEEK)
+    day = models.CharField(max_length=10, choices=DAY_OF_THE_WEEK , unique=True)
 
     def __str__(self):
         return self.day
