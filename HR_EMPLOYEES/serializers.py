@@ -115,6 +115,24 @@ class weakly_leaveSerializer(serializers.ModelSerializer):
 
 ##########################################
 
+class weakly_leaveSerializer(serializers.ModelSerializer):
+
+    class Meta:
+        model = weakly_leave
+        fields = '__all__'
+
+
+
+
+
+
+
+
+
+
+
+##########################################
+
 class managementsSerializer(serializers.ModelSerializer):
 
     class Meta:

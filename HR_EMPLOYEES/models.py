@@ -165,6 +165,24 @@ class weakly_leave(models.Model):
         return self.day
 
 
+class leave_request(models.Model):
+
+    the_leave =  models.ForeignKey(DaysOff, on_delete=models.CASCADE)
+    number_of_days_requested = models.IntegerField(null=True)
+    accepted = models.BooleanField()
+
+
+
+
+
+    def __str__(self):
+        return f"{self.the_leave.user} | {self.the_leave.leave_name} |r {self.number_of_days_requested} | a {self.the_leave.available_for_this_user}"
+
+
+
+
+
+
 
 
 @receiver(post_save, sender=User)
