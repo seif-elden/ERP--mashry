@@ -28,7 +28,7 @@ class allEmpDataSerializer(serializers.ModelSerializer):
                     ]
 
 
-class allEmpDatacreat_updateS_erializer(serializers.ModelSerializer):
+class allEmpDatacreat_serializer(serializers.ModelSerializer):
 
     class Meta:
         model = User
@@ -42,25 +42,39 @@ class allEmpDatacreat_updateS_erializer(serializers.ModelSerializer):
         read_only_fields = ('id', 'emp_id')
         extra_kwargs = {
             'password': {'write_only': True , "required" : True},
-            "family_relation" :{"required" : True},
-            "address" :{"required" : True},
             "username" :{"required" : True},
             "first_name" :{"required" : True},
-            "last_name" :{"required" : True},
-            "ProfileImg" :{"required" : True},
-            "CV" :{"required" : True},
-            "national_id" :{"required" : True},
-            "caontact_number" :{"required" : True},
-            "emergancy_contact" :{"required" : True},
-            "bank_account" :{"required" : True},
+            "last_name" :{"required" : True},       
             "JobTitle" :{"required" : True},
             "emp_type" :{"required" : True},
             "salary" :{"required" : True},
             "the_contract_time" :{"required" : True},
             "direct_manager" :{"required" : True},
-            "family_name" :{"required" : True},
+            "contract_copy" :{"required" : True},
+            "insurance" :{"required" : True},
             
+        }
 
+class allEmpDataupdate_serializer(serializers.ModelSerializer):
+
+    class Meta:
+        model = User
+        fields = ['id' , 'family_relation', 'address','password' ,'emp_id' , 'username', 'first_name' ,'last_name','ProfileImg' , 'CV' , 'national_id' ,
+                    "insurance" ,"contract_copy" , 'birthday', 'gender', 'email',
+                    'caontact_number', 'family_name' , 'emergancy_contact' , 'bank_account' ,
+                    'JobTitle' , 'emp_type' , 'salary' ,'the_contract_time', 'branch' , 'direct_manager',
+                    'bank_account_iban' , 'bank_name' , 'paypal_email'
+
+                    ]
+        read_only_fields = ('id', 'emp_id')
+        extra_kwargs = {
+            'password': {'write_only': True , "required" : False},
+            "username" :{"required" : False},
+            "first_name" :{"required" : False},
+            "last_name" :{"required" : False},       
+            "email" :{"required" : False},       
+
+            
         }
         
 

@@ -48,7 +48,7 @@ class branches(models.Model):
     
 class User(AbstractUser):
 
-    first_name = models.CharField( max_length=150)
+    first_name = models.CharField( max_length=150 )
     last_name = models.CharField( max_length=150)
     email = models.EmailField()
 
@@ -82,31 +82,31 @@ class User(AbstractUser):
         default= ""
     )
 
-    address = models.CharField(max_length=120 , null=True)
+    address = models.CharField(max_length=120 , null=True , blank=True)
 
-    caontact_number = models.CharField(max_length=12 , null=True)
+    caontact_number = models.CharField(max_length=12 , null=True , blank=True)
 
     bank_account_iban = models.CharField(max_length=255,null=True,blank=True)
-    bank_account = models.CharField(max_length=255,null=True,blank=True)
+    bank_account = models.CharField(max_length=255,null=True,blank=True )
     bank_name = models.CharField(max_length=255,null=True,blank=True)
 
     paypal_email = models.EmailField(null=True,blank=True)
 
-    birthday = models.DateField(null=True)
+    birthday = models.DateField(null=True , blank=True)
 
 
     emp_id = models.CharField(max_length=255,null=True)
 
-    family_name = models.CharField(max_length=255,null=True)
-    family_relation = models.CharField(max_length=255,null=True)
-    emergancy_contact = models.CharField(max_length=12 , null=True)
+    family_name = models.CharField(max_length=255,null=True ,  blank=True)
+    family_relation = models.CharField(max_length=255,null=True, blank=True)
+    emergancy_contact = models.CharField(max_length=12 , null=True, blank=True)
 
     
-    the_contract_time = models.DateField(null=True)
-    salary = models.IntegerField(null=True)
-    branch = models.ForeignKey(branches,on_delete=models.CASCADE,null=True)
+    the_contract_time = models.DateField(null=True, blank=True)
+    salary = models.IntegerField(null=True, blank=True)
+    branch = models.ForeignKey(branches,on_delete=models.CASCADE,null=True, blank=True)
 
-    direct_manager = models.ForeignKey('self',on_delete=models.CASCADE,null=True)
+    direct_manager = models.ForeignKey('self',on_delete=models.CASCADE,null=True, blank=True)
     JobTitle = models.ForeignKey(JobTitle ,on_delete=models.CASCADE,null=True , related_name='JobTitles')
     
 

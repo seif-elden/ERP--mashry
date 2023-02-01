@@ -31,7 +31,7 @@ class SomEmpData(APIView):
 
 class AddEmp(generics.CreateAPIView):
     queryset = User.objects.all()
-    serializer_class = allEmpDatacreat_updateS_erializer
+    serializer_class = allEmpDatacreat_serializer
 
     authentication_classes = (CsrfExemptSessionAuthentication, BasicAuthentication)
     permission_classes = [IsAuthenticated]
@@ -39,7 +39,7 @@ class AddEmp(generics.CreateAPIView):
 
 class EditEmpData(generics.UpdateAPIView):
     queryset = User.objects.all()
-    serializer_class = allEmpDatacreat_updateS_erializer
+    serializer_class = allEmpDataupdate_serializer
 
     authentication_classes = (CsrfExemptSessionAuthentication, BasicAuthentication)
     permission_classes = [IsAuthenticated]
