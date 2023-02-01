@@ -140,7 +140,7 @@ class weakly_leaveSerializer(serializers.ModelSerializer):
 
 class DaysOffSerializer(serializers.ModelSerializer):
     leave_name = serializers.StringRelatedField()
-    user = serializers.StringRelatedField()
+    user = SomEmpDataSerializer()
 
     class Meta:
         model = DaysOff
