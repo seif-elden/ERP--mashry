@@ -188,7 +188,7 @@ class add_leave_request(APIView):
         if request.user != the_leave.user :
             return Response(data={"hakeeer":"fuck off"},status=status.HTTP_401_UNAUTHORIZED)
         
-        if request.data.get("number_of_days_requested") > the_leave.available_for_this_user :
+        if int(request.data.get("number_of_days_requested")) > the_leave.available_for_this_user :
             return Response(data={"number of days ":"the number you inserted is larger than your limit"},status=status.HTTP_400_BAD_REQUEST)
 
 
