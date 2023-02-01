@@ -32,6 +32,8 @@ urlpatterns = [
 
     path('add-leave-request/', views.add_leave_request.as_view()),
     path('list-avuser-leave/', views.list_avfruser_leave_request.as_view()),
+    path('list-leave-request-managment/', views.list_leave_request_managment.as_view()),
+    path('response-to-leave-request-managment/<pk>/', views.response_to_leave_request_managment.as_view()),
 
 
     path('available-managments/', views.available_managements.as_view()),

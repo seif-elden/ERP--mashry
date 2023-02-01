@@ -124,7 +124,15 @@ class weakly_leaveSerializer(serializers.ModelSerializer):
 
 ##########################################
 
-class leave_requestSerializer(serializers.ModelSerializer):
+class DaysOffSerializer(serializers.ModelSerializer):
+    leave_name = serializers.StringRelatedField()
+    user = serializers.StringRelatedField()
+
+    class Meta:
+        model = DaysOff
+        fields = '__all__'
+
+class add_leave_requestSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = leave_request
@@ -133,13 +141,21 @@ class leave_requestSerializer(serializers.ModelSerializer):
                 "number_of_days_requested" :{"required" : True},
             }
 
-
-class DaysOffSerializer(serializers.ModelSerializer):
-    leave_name = serializers.StringRelatedField()
-    user = serializers.StringRelatedField()
+class edit_leave_requestSerializer(serializers.ModelSerializer):
 
     class Meta:
-        model = DaysOff
+        model = leave_request
+        fields = ['accepted']
+        extra_kwargs = {
+                "accepted" :{"required" : True},
+            }
+
+class list_leave_requestSerializer(serializers.ModelSerializer):
+
+    the_leave = DaysOffSerializer()
+
+    class Meta:
+        model = leave_request
         fields = '__all__'
 
 

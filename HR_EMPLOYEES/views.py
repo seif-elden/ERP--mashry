@@ -192,7 +192,7 @@ class add_leave_request(APIView):
             return Response(data={"number of days ":"the number you inserted is larger than your limit"},status=status.HTTP_400_BAD_REQUEST)
 
 
-        serializer = leave_requestSerializer(data=request.data)
+        serializer = add_leave_requestSerializer(data=request.data)
         if serializer.is_valid():
             serializer.save()
             return Response(serializer.data , status=status.HTTP_201_CREATED)
@@ -212,6 +212,27 @@ class list_avfruser_leave_request(APIView):
         serializer = DaysOffSerializer(avfruser, many=True)
         return Response(serializer.data)
 
+
+
+class list_leave_request_managment(APIView):
+
+    authentication_classes = (CsrfExemptSessionAuthentication, BasicAuthentication)
+    permission_classes = [IsAuthenticated]
+
+    def get(self, request, format=None):
+
+        avfrequests = leave_request.objects.filter(the_leave__user__direct_manager = request.user)
+
+        serializer = list_leave_requestSerializer(avfrequests, many=True)
+
+        return Response(serializer.data)
+
+
+class response_to_leave_request_managment(generics.UpdateAPIView):
+    queryset = leave_request.objects.all()
+    serializer_class = edit_leave_requestSerializer
+    authentication_classes = (CsrfExemptSessionAuthentication, BasicAuthentication)
+    permission_classes = [IsAuthenticated]
 
 
 ##########################################
