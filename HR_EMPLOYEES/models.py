@@ -170,6 +170,7 @@ class leave_request(models.Model):
     the_leave =  models.ForeignKey(DaysOff, on_delete=models.CASCADE , related_name="the_leave")
     number_of_days_requested = models.IntegerField(null=True)
     accepted = models.BooleanField(null=True)
+    started_at = models.DateField(auto_now=False, auto_now_add=False,null=True)
 
 
 
