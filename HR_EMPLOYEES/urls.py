@@ -30,6 +30,12 @@ urlpatterns = [
     path('add-weakly-leave/', views.AddWeakly_leave.as_view()),
     path('delete-weakly-leave/<pk>/', views.DeleteWeakly_leave.as_view()),
 
+
+    path('list-yearly-leave/', views.List_yearly_leave.as_view()),
+    path('add-yearly-leave/', views.Add_yearly_leave.as_view()),
+    path('delete-yearly-leave/<pk>/', views.Delete_yearly_leave.as_view()),
+    path('edit-yearly-leave/<pk>/', views.Edit_yearly_leave.as_view()),
+
     path('add-leave-request/', views.add_leave_request.as_view()),
     path('list-avuser-leave/', views.list_avfruser_leave_request.as_view()),
     path('list-leave-request-user/', views.list_leave_request_user.as_view()),

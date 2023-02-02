@@ -165,6 +165,14 @@ class weakly_leave(models.Model):
         return self.day
 
 
+class yearly_leave(models.Model):
+    name = models.CharField( max_length=50)    
+    date = models.DateField(auto_now=False, auto_now_add=False)
+    
+    def __str__(self):
+        return self.name
+
+
 class leave_request(models.Model):
 
     the_leave =  models.ForeignKey(DaysOff, on_delete=models.CASCADE , related_name="the_leave")

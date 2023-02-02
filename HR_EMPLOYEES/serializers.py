@@ -128,6 +128,12 @@ class weakly_leaveSerializer(serializers.ModelSerializer):
         model = weakly_leave
         fields = '__all__'
 
+class yearly_leaveSerializer(serializers.ModelSerializer):
+
+    class Meta:
+        model = yearly_leave
+        fields = '__all__'
+
 ##########################################
 
 class weakly_leaveSerializer(serializers.ModelSerializer):

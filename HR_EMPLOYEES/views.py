@@ -297,6 +297,37 @@ class List_Weakly_leave(generics.ListAPIView):
 
 ##########################################
 
+
+class Add_yearly_leave(generics.CreateAPIView):
+    queryset = yearly_leave.objects.all()
+    serializer_class = yearly_leaveSerializer
+
+    authentication_classes = (CsrfExemptSessionAuthentication, BasicAuthentication)
+    permission_classes = [IsAuthenticated]
+
+class Delete_yearly_leave(generics.DestroyAPIView):
+    queryset = yearly_leave.objects.all()
+    serializer_class = yearly_leaveSerializer
+    authentication_classes = (CsrfExemptSessionAuthentication, BasicAuthentication)
+    permission_classes = [IsAuthenticated]
+
+
+class List_yearly_leave(generics.ListAPIView):
+    queryset = yearly_leave.objects.all()
+    serializer_class = yearly_leaveSerializer
+    authentication_classes = (CsrfExemptSessionAuthentication, BasicAuthentication)
+    permission_classes = [IsAuthenticated]
+
+class Edit_yearly_leave(generics.UpdateAPIView):
+    queryset = yearly_leave.objects.all()
+    serializer_class = yearly_leaveSerializer
+    authentication_classes = (CsrfExemptSessionAuthentication, BasicAuthentication)
+    permission_classes = [IsAuthenticated]
+
+
+##########################################
+
+
 class available_leave(APIView):
 
     authentication_classes = (CsrfExemptSessionAuthentication, BasicAuthentication)
