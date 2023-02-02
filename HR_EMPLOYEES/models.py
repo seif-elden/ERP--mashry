@@ -227,11 +227,17 @@ def create_DaysOff_for_new_user(sender, instance=None, created=False, **kwargs):
 
 @receiver(post_save, sender=leave_request)
 def delete_days_from_avdays(sender, instance=None, created=False, **kwargs):
-    if instance.accepted:
+    
+    x = DaysOff.objects.get(pk=instance.the_leave.id)
 
-        x = DaysOff.objects.get(pk=instance.the_leave.id )
+    if created:
+
         x.available_for_this_user -= instance.number_of_days_requested
         x.save()
+
+    if instance.accepted == False :
         
+        x.available_for_this_user += instance.number_of_days_requested
+        x.save()      
 
     
