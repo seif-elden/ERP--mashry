@@ -228,6 +228,22 @@ class list_leave_request_managment(APIView):
         return Response(serializer.data)
 
 
+
+class list_leave_request_user(APIView):
+
+    authentication_classes = (CsrfExemptSessionAuthentication, BasicAuthentication)
+    permission_classes = [IsAuthenticated]
+
+    def get(self, request, format=None):
+
+        avfrequests = leave_request.objects.filter(the_leave__user = request.user)
+
+        serializer = list_leave_requestSerializer(avfrequests, many=True)
+
+        return Response(serializer.data)
+
+
+
 class response_to_leave_request_managment(generics.UpdateAPIView):
     queryset = leave_request.objects.all()
     serializer_class = edit_leave_requestSerializer
