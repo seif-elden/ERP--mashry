@@ -177,6 +177,27 @@ class edit_department(APIView):
 
 ##########################################
 
+class delete_leave_request_user(APIView):
+    authentication_classes = (CsrfExemptSessionAuthentication, BasicAuthentication)
+    permission_classes = [IsAuthenticated]
+
+    def delete(self, request, pk ,format=None):
+        try:
+            x = leave_request.objects.get(pk=pk)
+        except:
+            return Response(data={'leave request':"couldn't find the request"},status=status.HTTP_404_NOT_FOUND)
+        
+        if x.the_leave.user == request.user :
+            x.delete()
+        else :
+            return Response(data={'hackeeeeeeeer':"fuck off"},status=status.HTTP_404_NOT_FOUND)
+
+        return Response(data={"succsess":"deleted"})
+
+
+   
+
+
 class add_leave_request(APIView):
 
     authentication_classes = (CsrfExemptSessionAuthentication, BasicAuthentication)
