@@ -188,6 +188,19 @@ class leave_request(models.Model):
         return f"{self.the_leave.user} | {self.the_leave.leave_name} |r {self.number_of_days_requested} | a {self.the_leave.available_for_this_user}"
 
 
+class attendance(models.Model):
+
+    user = models.ForeignKey(User, on_delete=models.CASCADE, null=True)
+    the_day = models.DateField( auto_now_add=True)
+
+    
+    
+
+
+    def __str__(self):
+        return f"{self.user} | {self.the_day}"
+
+
 
 
 

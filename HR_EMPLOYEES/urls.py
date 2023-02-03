@@ -49,6 +49,10 @@ urlpatterns = [
     path('response-to-leave-request-managment/<pk>/', views.response_to_leave_request_managment.as_view()),
 
 
+    path('user-attendance/', views.user_attendance.as_view()),
+
+
+
     path('available-managments/', views.available_managements.as_view()),
 
 

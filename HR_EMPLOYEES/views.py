@@ -7,6 +7,7 @@ from rest_framework.views import APIView
 
 from rest_framework.authentication import SessionAuthentication, BasicAuthentication
 from rest_framework.permissions import IsAuthenticated
+import datetime
 
 
 # Create your views here.
@@ -391,6 +392,33 @@ class edit_leave(APIView):
             serializer.save()
             return Response(serializer.data)
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+
+##########################################
+
+
+class user_attendance(APIView):
+
+    authentication_classes = (CsrfExemptSessionAuthentication, BasicAuthentication)
+    permission_classes = [IsAuthenticated]
+
+    def post(self, request, format=None):
+
+        try :
+            x = attendance.objects.get(
+                user = request.user,
+                the_day = datetime.date.today()
+                )
+            return Response(data={"failed":" تم تسجيل الحضور بالفعل اليوم" } , status=status.HTTP_208_ALREADY_REPORTED)
+            
+        except :
+            attendance.objects.create(
+                user = request.user
+            )
+            return Response(data={"succsess":"تم تسجيل الحضور"} , status=status.HTTP_201_CREATED)
+
+
+
+
 
 ##########################################
 

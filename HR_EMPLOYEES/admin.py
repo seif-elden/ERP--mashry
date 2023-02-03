@@ -12,6 +12,7 @@ admin.site.register(equipment)
 admin.site.register(weakly_leave)
 admin.site.register(leave_request)
 admin.site.register(yearly_leave)
+admin.site.register(attendance)
 
 
 # Register your models here.
