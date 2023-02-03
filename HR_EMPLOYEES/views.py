@@ -17,6 +17,17 @@ class CsrfExemptSessionAuthentication(SessionAuthentication):
     def enforce_csrf(self, request):
         return  # To not perform the csrf check previously happening
 
+
+class login(APIView):
+    authentication_classes = (CsrfExemptSessionAuthentication, BasicAuthentication)
+    permission_classes = [IsAuthenticated]
+
+
+    def get(self, request, format=None):
+        serializer = SomEmpDataSerializer(request.user)
+        return Response(serializer.data)
+
+
 ##########################################
 
 class SomEmpData(APIView):
