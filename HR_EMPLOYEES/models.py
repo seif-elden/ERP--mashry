@@ -198,6 +198,11 @@ class leave_request(models.Model):
 def create_DaysOff_for_new_user(sender, instance=None, created=False, **kwargs):
     if created:
 
+        # Save the provided password in hashed format
+        instance.set_password (instance.password)
+        instance.save()
+
+
         for x in DaysOffTypes.objects.all() :
             DaysOff.objects.create(
                 user=instance,

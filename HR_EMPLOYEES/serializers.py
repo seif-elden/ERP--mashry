@@ -50,8 +50,8 @@ class allEmpDatacreat_serializer(serializers.ModelSerializer):
             "salary" :{"required" : True},
             "the_contract_time" :{"required" : True},
             "direct_manager" :{"required" : True},
-            "contract_copy" :{"required" : True},
-            "insurance" :{"required" : True},
+            # "contract_copy" :{"required" : True},
+            # "insurance" :{"required" : True},
             
         }
 
