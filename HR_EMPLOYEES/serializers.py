@@ -175,10 +175,8 @@ class edit_leave_requestSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = leave_request
-        fields = ['accepted']
-        extra_kwargs = {
-                "accepted" :{"required" : True},
-            }
+        fields = ['accepted_by_direct_manager',"accepted_by_hr_manager"]
+
 
 class list_leave_requestSerializer(serializers.ModelSerializer):
 
