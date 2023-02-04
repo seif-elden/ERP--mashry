@@ -26,7 +26,18 @@ class login(APIView):
 
     def get(self, request, format=None):
         serializer = SomEmpDataSerializer(request.user)
-        return Response(serializer.data)
+        
+        x = User.objects.filter(direct_manager=request.user)
+
+
+        if x :
+            newdict={'is_direct_manager':1}
+            newdict.update(serializer.data)
+        else:
+            newdict={'is_direct_manager':0}
+            newdict.update(serializer.data)
+        
+        return Response(newdict)
 
 
 ##########################################
