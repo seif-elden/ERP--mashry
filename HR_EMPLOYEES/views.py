@@ -417,6 +417,28 @@ class user_attendance(APIView):
             return Response(data={"succsess":"تم تسجيل الحضور"} , status=status.HTTP_201_CREATED)
 
 
+class list_user_attendance_days(APIView):
+    authentication_classes = (CsrfExemptSessionAuthentication, BasicAuthentication)
+    permission_classes = [IsAuthenticated]
+
+
+    def get(self, request, *args, **kwargs):
+        try:
+            theuser = User.objects.get(pk=self.kwargs['pk'] )
+
+        except:
+            return Response(data={"failed":" لم نتمكن من ايجاد هذا الموظف" } , status=status.HTTP_400_BAD_REQUEST)
+            
+
+
+        attendances = attendance.objects.filter(
+            user = theuser
+        )
+        serializer = attendance_Serializer(attendances, many=True)
+        return Response(serializer.data)
+
+
+
 
 
 

@@ -50,6 +50,8 @@ urlpatterns = [
 
 
     path('user-attendance/', views.user_attendance.as_view()),
+    path('list-user-attendance-days/<pk>/', views.list_user_attendance_days.as_view()),
+
 
 
 

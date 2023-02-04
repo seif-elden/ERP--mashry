@@ -144,6 +144,14 @@ class weakly_leaveSerializer(serializers.ModelSerializer):
 
 ##########################################
 
+class attendance_Serializer(serializers.ModelSerializer):
+
+    class Meta:
+        model = attendance
+        fields = '__all__'
+
+##########################################
+
 class DaysOffSerializer(serializers.ModelSerializer):
     leave_name = serializers.StringRelatedField()
     user = SomEmpDataSerializer()
