@@ -164,9 +164,11 @@ class add_leave_requestSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = leave_request
-        fields = '__all__'
+        fields = ['the_leave', 'number_of_days_requested' ,'started_at']
         extra_kwargs = {
+                "the_leave" :{"required" : True},
                 "number_of_days_requested" :{"required" : True},
+                "started_at" :{"required" : True},
             }
 
 class edit_leave_requestSerializer(serializers.ModelSerializer):

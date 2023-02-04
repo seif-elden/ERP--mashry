@@ -254,12 +254,14 @@ class list_leave_request_managment(APIView):
 
     def get(self, request, format=None):
 
-        avfrequests = leave_request.objects.filter(the_leave__user__direct_manager = request.user)
+        if request.user.id == 31 :
+            avfrequests = leave_request.objects.filter(accepted_by_direct_manager=True)
+        else :
+            avfrequests = leave_request.objects.filter(the_leave__user__direct_manager = request.user)
 
         serializer = list_leave_requestSerializer(avfrequests, many=True)
 
         return Response(serializer.data)
-
 
 
 class list_leave_request_user(APIView):

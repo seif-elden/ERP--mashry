@@ -177,7 +177,8 @@ class leave_request(models.Model):
 
     the_leave =  models.ForeignKey(DaysOff, on_delete=models.CASCADE , related_name="the_leave")
     number_of_days_requested = models.IntegerField(null=True)
-    accepted = models.BooleanField(null=True)
+    accepted_by_direct_manager = models.BooleanField(null=True)
+    accepted_by_hr_manager = models.BooleanField(null=True)
     started_at = models.DateField(auto_now=False, auto_now_add=False,null=True)
 
 
@@ -212,8 +213,9 @@ def create_DaysOff_for_new_user(sender, instance=None, created=False, **kwargs):
     if created:
 
         # Save the provided password in hashed format
-        instance.set_password (instance.password)
-        instance.save()
+        if instance.is_staff != True :
+            instance.set_password (instance.password)
+            instance.save()
 
 
         for x in DaysOffTypes.objects.all() :
@@ -261,7 +263,7 @@ def delete_days_from_avdays(sender, instance=None, created=False, **kwargs):
         x.available_for_this_user -= instance.number_of_days_requested
         x.save()
 
-    if instance.accepted == False :
+    if instance.accepted_by_direct_manager == False :
         
         x.available_for_this_user += instance.number_of_days_requested
         x.save()      
