@@ -49,6 +49,7 @@ urlpatterns = [
     path('response-to-leave-request-managment/<pk>/', views.response_to_leave_request_managment.as_view()),
 
 
+    path('response-to-leave-request-hr-managment/<pk>/', views.response_to_leave_request_hr_managment.as_view()),
 
 
 

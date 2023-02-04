@@ -285,6 +285,12 @@ class response_to_leave_request_managment(generics.UpdateAPIView):
     authentication_classes = (CsrfExemptSessionAuthentication, BasicAuthentication)
     permission_classes = [IsAuthenticated]
 
+class response_to_leave_request_hr_managment(generics.UpdateAPIView):
+    queryset = leave_request.objects.all()
+    serializer_class = edit_leave_request_hr_Serializer
+    authentication_classes = (CsrfExemptSessionAuthentication, BasicAuthentication)
+    permission_classes = [IsAuthenticated]
+
 
 ##########################################
 
